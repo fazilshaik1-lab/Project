@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration form</title>
+</head>
+<body align="center">
+    <h2 align="center">Register yourself here</h2>
+    <p>Please fill in this form to register with us</p>
+
+    <form>
+        <fieldset style="width:400px; margin:20px auto;">
+            <legend><strong>Personal Information</strong></legend>
+        <!--Name-->
+        <label>FullName:</label>
+        <input type="text" name="fullname" placeholder="No nick-names please">
+        <br><br>
+        <!--Password-->
+        <label>Password:</label>
+        <input type="password" name="password" placeholder="Confidential text">
+        <br><br>
+        <!--Re enter password-->
+        <label>Re-enter Password:</label>
+        <input type="password" name="password" placeholder="Remember this for life">
+        <br><br>
+        <!--Email-->
+        <label>Email Address:</label>
+        <input type="email" name="email" placeholder="Your saved email">
+        <br><br>
+        <!--Gender-->
+        <label>Gender:</label>
+        <select name= "Gender">
+        <option>Male</option><br><br>
+        <option>Female</option><br><br>
+        <option>Others</option><br><br>
+        </select>
+        <br><br>
+        <!--Nationality-->
+         <label>Residency:</label>
+        <input type="radio" name="residency" value="Indian"> Indian
+        <input type="radio" name="residency" value="Non-Indian"> Non-Indian
+        <br><br>
+        <!--Skills-->
+        <label>Skills:</label>
+        <input type="checkbox" name="skill" value="html"> HTML
+        <input type="checkbox" name="skill" value="css"> CSS
+        <input type="checkbox" name="skill" value="javasript"> JavaScript
+        <br><br>
+        <!--About You-->
+        <label>About You</label>
+        <br>
+        <textarea rows="5" columns="40" placeholder="Ps:Say something not mentioned in this form"></textarea>
+        <br>
+         <!-- Submit -->
+        <input type="submit" value="Register">
+        </fieldset>
+    </form>
+</body>
+</html>
