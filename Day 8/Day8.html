@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horizon University</title>
+
+    <style>
+/* -------- GLOBAL -------- */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* -------- HEADER -------- */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background: #0b3d6d;
+  padding: 15px 40px;
+  color: white;
+}
+
+/* Logo */
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+/* Nav */
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 25px;
+  font-size: 16px;
+}
+
+/* -------- HERO -------- */
+.hero {
+  height: 100vh;
+
+  background-image:
+    linear-gradient(rgba(11, 61, 109, 0.7), rgba(11, 61, 109, 0.7)),
+    url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+
+/* Hero content */
+.hero-content {
+  max-width: 700px;
+}
+
+/* Heading */
+.hero h1 {
+  font-size: 56px;
+  margin-bottom: 20px;
+}
+
+/* Paragraph */
+.hero p {
+  font-size: 20px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+/* Button */
+.hero button {
+  padding: 15px 30px;
+  font-size: 18px;
+  border: none;
+  background: #ffc107;
+  color: #000;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* -------- STATS SECTION -------- */
+.stats {
+  background: #f4f4f4;
+  padding: 60px 20px;
+}
+
+/* Container */
+.stats-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+}
+
+/* Individual box */
+.stat-box h2 {
+  font-size: 48px;
+  color: #0b3d6d;
+  margin-bottom: 10px;
+}
+
+.stat-box p {
+  font-size: 18px;
+  color: #333;
+}
+.stat {
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+/* -------- SECTION -------- */
+.departments {
+  background: #ffffff;
+  padding: 60px 20px;
+}
+
+/* Title */
+.section-title {
+  text-align: center;
+  font-size: 36px;
+  color: #0b3d6d;
+  margin-bottom: 40px;
+}
+
+/* Container */
+.dept-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Card */
+.dept-card {
+  width: 320px;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.dept-card:hover {
+  transform: translateY(-5px);
+  transition: 0.3s;
+}
+
+/* Top colored area */
+.card-top {
+  height: 140px;
+}
+
+/* Colors */
+.red {
+  background: linear-gradient(135deg, #ff7a5c, #f45d48);
+}
+
+.blue {
+  background: linear-gradient(135deg, #4a6cf7, #6fa9d8);
+}
+
+.green {
+  background: linear-gradient(135deg, #1fa67a, #3ed67b);
+}
+
+/* Body */
+.card-body {
+  padding: 20px;
+}
+
+/* Title */
+.card-body h3 {
+  color: #0b3d6d;
+  margin-bottom: 10px;
+}
+
+/* Text */
+.card-body p {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+/* Link */
+.card-body a {
+  text-decoration: none;
+  color: #0b3d6d;
+  font-weight: bold;
+}
+
+/* -------- FOOTER -------- */
+.footer {
+  background: #1f1f1f;
+  color: #ddd;
+  padding: 60px 20px 20px;
+}
+
+/* Container */
+.footer-container {
+  display: flex;
+  justify-content: center;
+  max-width: 1200px;
+  margin: auto;
+  gap: 120px;
+}
+
+/* Columns */
+.footer-col h3 {
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+/* Text */
+.footer-col p {
+  margin: 5px 0;
+}
+
+/* Links */
+.footer-col a {
+  display: block;
+  color: #ccc;
+  text-decoration: none;
+  margin: 8px 0;
+}
+
+/* Hover */
+.footer-col a:hover {
+  color: #fff;
+}
+
+/* Bottom section */
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid #444;
+  margin-top: 40px;
+  padding-top: 20px;
+  color: #aaa;
+}
+</style>
+
+</head>
+<body>
+    <!-- HEADER -->
+<header>
+  <div class="logo">Horizon University</div>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Academics</a>
+    <a href="#">Admissions</a>
+    <a href="#">Campus Life</a>
+  </nav>
+</header>
+
+<!-- HERO SECTION -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Empowering Your Future</h1>
+    <p>
+      Discover a world-class education designed to innovate, inspire, and
+      elevate your career to the next level.
+    </p>
+    <button>Apply Now</button>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="stats-container">
+
+    <div class="stat-box">
+      <h2>50+</h2>
+      <p>Undergraduate Programs</p>
+    </div>
+
+    <div class="stat-box">
+      <h2>15:1</h2>
+      <p>Student-to-Faculty Ratio</p>
+    </div>
+
+    <div class="stat-box">
+      <h2>95%</h2>
+      <p>Graduate Employment</p>
+    </div>
+
+    <div class="stat-box">
+      <h2>120+</h2>
+      <p>Student Clubs & Organizations</p>
+    </div>
+
+  </div>
+</section>
+
+<section class="departments">
+
+  <h2 class="section-title">Featured Departments</h2>
+
+  <div class="dept-container">
+
+    <!-- Card 1 -->
+    <div class="dept-card">
+      <div class="card-top red"></div>
+      <div class="card-body">
+        <h3>College of Engineering</h3>
+        <p>
+          Build the future with our cutting-edge labs and industry-experienced faculty.
+          Programs in Mechanical, Civil, and Computer Engineering.
+        </p>
+        <a href="#">Learn More →</a>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="dept-card">
+      <div class="card-top blue"></div>
+      <div class="card-body">
+        <h3>School of Business</h3>
+        <p>
+          Develop leadership and entrepreneurial skills to thrive in the global marketplace.
+          AACSB-accredited programs.
+        </p>
+        <a href="#">Learn More →</a>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="dept-card">
+      <div class="card-top green"></div>
+      <div class="card-body">
+        <h3>Arts & Sciences</h3>
+        <p>
+          Explore your passions with diverse programs in Humanities, Biological Sciences,
+          and Digital Arts.
+        </p>
+        <a href="#">Learn More →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="footer">
+
+  <div class="footer-container">
+
+    <!-- Column 1 -->
+    <div class="footer-col">
+      <h3>Horizon University</h3>
+      <p>123 University Blvd.</p>
+      <p>Innovation City, ST 12345</p>
+      <p>Phone: (555) 123-4567</p>
+    </div>
+
+    <!-- Column 2 -->
+    <div class="footer-col">
+      <h3>Quick Links</h3>
+      <a href="#">About Us</a>
+      <a href="#">Financial Aid</a>
+      <a href="#">Student Portal</a>
+      <a href="#">Alumni</a>
+    </div>
+
+    <!-- Column 3 -->
+    <div class="footer-col">
+      <h3>Resources</h3>
+      <a href="#">Library</a>
+      <a href="#">Campus Map</a>
+      <a href="#">Career Center</a>
+      <a href="#">Athletics</a>
+    </div>
+
+  </div>
+
+  <!-- Bottom Line -->
+  <div class="footer-bottom">
+    © 2026 Horizon University. All Rights Reserved.
+  </div>
+
+</footer>
+</body>
+</html>
