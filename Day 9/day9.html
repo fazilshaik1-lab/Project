@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gita University</title>
+
+<style>
+
+/* -------- GLOBAL -------- */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* -------- HEADER -------- */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 15px 60px;
+  background: #0b1f3a;
+  color: white;
+}
+
+header nav {
+  display: flex;
+  gap: 30px;
+}
+
+header nav a {
+  color: white;
+  text-decoration: none;
+}
+
+/* -------- HERO -------- */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  min-height: 100vh;
+  padding: 80px 60px;
+  gap: 40px;
+
+  background: linear-gradient(to right, #0b1f3a, #1e2f4d);
+  color: white;
+}
+
+.hero-left {
+  width: 48%;
+}
+
+.tag {
+  background: rgba(255,255,255,0.1);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+.hero h1 {
+  font-size: 56px;
+  line-height: 1.2;
+}
+
+.hero h1 span {
+  color: #4f8cff;
+}
+
+.hero p {
+  margin: 20px 0;
+  color: #cbd5e1;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+/* BUTTONS */
+.primary {
+  background: white;
+  color: black;
+  padding: 12px 20px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(0,0,0,0.2);
+}
+
+.secondary {
+  background: transparent;
+  border: 1px solid #aaa;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 20px;
+  transition: 0.3s;
+}
+
+.secondary:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+/* -------- GRID -------- */
+.hero-right {
+  width: 48%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 220px 220px;
+  gap: 20px;
+  position: relative;
+}
+
+.box {
+  border-radius: 20px;
+  background-size: cover;
+  background-position: center;
+  transition: 0.3s;
+}
+
+.box:hover {
+  transform: scale(1.05);
+}
+
+/* IMAGES */
+.box1 {
+  background-image: url("https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600");
+}
+
+.box2 {
+  background-image: url("https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600");
+  grid-row: span 2;
+}
+
+.box3 {
+  background-image: url("https://images.unsplash.com/photo-1513258496099-48168024aec0?w=600");
+}
+
+.box4 {
+  background-image: url("https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?w=600");
+}
+
+/* BADGE */
+.badge {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: #4f8cff;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+/* -------- STATS -------- */
+.stats-section {
+  background: #f4f6f8;
+  padding: 60px 40px;
+}
+
+.stats-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.stat-card {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  text-align: center;
+  width: 220px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.stat-card h2 {
+  color: #4f8cff;
+}
+
+/* -------- SECTION -------- */
+.academic {
+  background: #f4f6f8;
+  padding: 80px 40px;
+  text-align: center;
+}
+
+/* Title */
+.title {
+    font-family: "Georgia", serif;
+  font-size: 40px;
+  margin-bottom: 10px;
+  color: #1f2937;
+}
+
+.subtitle {
+  color: #6b7280;
+  max-width: 600px;
+  margin: 0 auto 50px;
+}
+
+/* GRID */
+.academic-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+/* CARD */
+.acad-card {
+  background: #fff;
+  padding: 30px;
+  width: 320px;
+  border-radius: 16px;
+  text-align: left;
+
+  border: 1px solid #e5e7eb;
+  transition: all 0.3s ease;
+}
+
+/* HOVER EFFECT */
+.acad-card:hover {
+  border-color: #4f8cff;
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* ICON BOX */
+.icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* ICON COLORS */
+.blue {
+  background: #e0ecff;
+  color: #4f8cff;
+}
+
+.purple {
+  background: #e6e0ff;
+  color: #6b5cff;
+}
+
+.pink {
+  background: #ffe0ec;
+  color: #ff4f8c;
+}
+
+/* TEXT */
+.acad-card h3 {
+  margin-bottom: 10px;
+  color: #111827;
+}
+
+.acad-card p {
+  color: #6b7280;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* LINK */
+.acad-card a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #4f8cff;
+}
+
+/* SECTION */
+.gallery {
+  background: #f4f6f8;
+  padding: 60px;
+}
+
+/* GRID */
+.gallery-grid {
+  display: grid;
+
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 250px 250px;
+
+  gap: 20px;
+}
+
+/* COMMON IMAGE STYLE */
+.img {
+  border-radius: 20px;
+  background-size: cover;
+  background-position: center;
+}
+
+/* LAYOUT POSITIONING */
+
+/* LEFT BIG IMAGE */
+.big {
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+}
+
+/* RIGHT TOP */
+.top-left {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+
+.top-right {
+  grid-column: 3 / 4;
+  grid-row: 1 / 2;
+}
+
+/* RIGHT BOTTOM (wide) */
+.bottom {
+  grid-column: 2 / 4;
+  grid-row: 2 / 3;
+}
+
+.big {
+  background-image: url("https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=800");
+}
+
+.top-left {
+  background-image: url("https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?w=600");
+}
+
+.top-right {
+  background-image: url("https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600");
+}
+
+.bottom {
+  background-image: url("https://images.unsplash.com/photo-1513258496099-48168024aec0?w=800");
+}
+
+/* IMAGE CONTAINER */
+.img {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+/* BLUR EFFECT */
+.img:hover {
+  filter: blur(2px);
+}
+
+/* OVERLAY */
+.overlay {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(0,0,0,0.4);
+  color: white;
+
+  opacity: 0;
+  transition: 0.3s;
+  text-align: center;
+}
+
+/* SHOW TEXT ON HOVER */
+.img:hover .overlay {
+  opacity: 1;
+}
+
+/* SECTION */
+.admission {
+  background: #0b1f3a;
+  padding: 80px 60px;
+  color: white;
+}
+
+/* FLEX LAYOUT */
+.admission-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 60px;
+}
+
+/* LEFT */
+.admission-left {
+  width: 50%;
+}
+
+.admission-left h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.admission-left p {
+  color: #cbd5e1;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+/* INFO CARDS */
+.info-card {
+  background: rgba(255,255,255,0.05);
+  padding: 20px;
+  border-radius: 16px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* RIGHT */
+.admission-right {
+  width: 50%;
+}
+
+/* FORM CARD */
+.form-card {
+  background: #f8fafc;
+  color: #111;
+  padding: 40px;
+  border-radius: 24px;
+}
+
+/* TITLE */
+.form-card h2 {
+  margin-bottom: 20px;
+}
+
+/* ROW */
+.row {
+  display: flex;
+  gap: 20px;
+}
+
+/* FIELD */
+.field {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.field label {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.field input,
+.field select {
+  width: 100%;
+  padding: 14px;
+  margin-top: 6px;
+  border-radius: 14px;
+  border: 1px solid #cbd5e1;
+  outline: none;
+}
+
+/* BUTTON */
+.submit-btn {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 20px;
+  background: #4f8cff;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.submit-btn:hover {
+  background: #3b6fd8;
+}
+
+/* FOOTER */
+.footer {
+  background: #020b1c;
+  color: white;
+  text-align: center;
+  padding: 80px 20px;
+}
+
+/* LOGO */
+.footer-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.logo-box {
+  width: 40px;
+  height: 40px;
+  background: #4f8cff;
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+/* DESCRIPTION */
+.footer-desc {
+  max-width: 600px;
+  margin: 0 auto 40px;
+  color: #9ca3af;
+  line-height: 1.6;
+}
+
+/* LINKS */
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-links a {
+  color: #cbd5e1;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-links a:hover {
+  color: white;
+}
+
+/* COPYRIGHT */
+.footer-copy {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.campus-intro {
+  background: #f4f6f8;
+  text-align: center;
+  padding: 80px 20px 40px;
+}
+
+/* Heading */
+.campus-intro h2 {
+  font-family: "Georgia", serif;
+  letter-spacing: 1px;
+   font-size: 40px;
+  color: #111827;
+  margin-bottom: 20px;
+}
+
+/* Subtitle */
+.campus-intro p {
+  max-width: 700px;
+  margin: 0 auto;
+  color: #6b7280;
+  font-size: 18px;
+  line-height: 1.6;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+  <h2>GITA UNIVERSITY</h2>
+
+ <nav>
+  <a href="#home">Home</a>
+  <a href="#departments">Academics</a>
+  <a href="#campus">Campus</a>
+  <a href="#admissions">Admissions</a>
+</nav>
+
+  <button class="primary">Apply Now</button>
+</header>
+
+<!-- HERO -->
+<section id="home" class="hero">
+
+  <div class="hero-left">
+    <p class="tag">INNOVATION • EXCELLENCE • IMPACT</p>
+
+    <h1>
+      Design Your Future <br>
+      in <span>Global Excellence</span>
+    </h1>
+
+    <p>
+      Immerse yourself in a landscape of architectural beauty and cutting-edge research.
+      Join a community of scholars dedicated to solving world-class challenges.
+    </p>
+
+    <div class="hero-buttons">
+      <button class="primary">Explore Programs</button>
+      <button class="secondary">Virtual Campus Tour</button>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="grid">
+      <div class="box box1"></div>
+      <div class="box box2"></div>
+      <div class="box box3"></div>
+      <div class="box box4"></div>
+
+      <div class="badge">
+        <h3>Top 1% Global</h3>
+        <p>RESEARCH PERFORMANCE</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- STATS -->
+<section id="stats" class="stats-section">
+  <div class="stats-wrapper">
+
+    <div class="stat-card">
+      <h2>#12</h2>
+      <p>National Ranking</p>
+    </div>
+
+    <div class="stat-card">
+      <h2>25+</h2>
+      <p>Research Centers</p>
+    </div>
+
+    <div class="stat-card">
+      <h2>98%</h2>
+      <p>Graduate Placement</p>
+    </div>
+
+    <div class="stat-card">
+      <h2>$12M</h2>
+      <p>Scholarship Fund</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="departments" class="academic">
+
+  <h2 class="title">Academic Departments</h2>
+  <p class="subtitle">
+    Pioneering disciplines that define the next generation of global industry and art.
+  </p>
+
+  <div class="academic-wrapper">
+
+    <!-- Card 1 -->
+    <div class="acad-card">
+      <div class="icon blue">🧪</div>
+      <h3>School of Design</h3>
+      <p>
+        Where architectural theory meets sustainable urban planning and modern aesthetics.
+      </p>
+      <a href="#">Explore Degrees →</a>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="acad-card">
+      <div class="icon purple">💻</div>
+      <h3>Engineering & AI</h3>
+      <p>
+        Leading the charge in robotic systems, neural networks, and advanced computation.
+      </p>
+      <a href="#">Explore Degrees →</a>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="acad-card">
+      <div class="icon pink">❤</div>
+      <h3>Bio-Sciences</h3>
+      <p>
+        Innovative research in genetics, biotechnology, and environmental protection.
+      </p>
+      <a href="#">Explore Degrees →</a>
+    </div>
+
+  </div>
+
+</section>
+<section id="campus" class="campus-intro">
+
+  <h2>Campus & Architecture</h2>
+
+  <p>
+    Experience the fusion of historic heritage and award-winning modern spaces
+    designed for academic synergy.
+  </p>
+
+</section>
+
+<section id="gallery" class="gallery">
+
+  <div class="gallery-grid">
+
+    <div class="img big">
+  <div class="overlay">
+    <h3>Campus Life</h3>
+    <p>Experience vibrant student culture</p>
+  </div>
+</div>
+
+<div class="img top-left">
+  <div class="overlay">
+    <h3>Main Building</h3>
+  </div>
+</div>
+
+<div class="img top-right">
+  <div class="overlay">
+    <h3>Collaborative Spaces</h3>
+  </div>
+</div>
+
+<div class="img bottom">
+  <div class="overlay">
+    <h3>Library & Research</h3>
+  </div>
+</div>
+  </div>
+
+</section>
+<section id="admissions" class="admission">
+
+  <div class="admission-container">
+
+    <!-- LEFT -->
+    <div class="admission-left">
+      <h1>Inquire for 2024 Fall Admissions</h1>
+
+      <p>
+        Join our next cohort of world-changers. Submit an inquiry to receive a personalized
+        admissions package and details on campus visitation dates.
+      </p>
+
+      <div class="info-card">
+        <h3>Visit Our Campus</h3>
+        <p>123 University Drive, Academic Valley, CA 90210</p>
+      </div>
+
+      <div class="info-card">
+        <h3>Contact Support</h3>
+        <p>+1 (800) GITA-EDU | admissions@gita.edu</p>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="admission-right">
+      <div class="form-card">
+
+        <h2>Request Information</h2>
+
+        <form>
+
+          <div class="row">
+            <div class="field">
+              <label>FIRST NAME</label>
+              <input type="text" placeholder="John">
+            </div>
+
+            <div class="field">
+              <label>LAST NAME</label>
+              <input type="text" placeholder="Doe">
+            </div>
+          </div>
+
+          <div class="field">
+            <label>EMAIL ADDRESS</label>
+            <input type="email" placeholder="j.doe@example.com">
+          </div>
+
+          <div class="field">
+            <label>LEVEL OF INTEREST</label>
+            <select>
+              <option>Undergraduate Program</option>
+              <option>Postgraduate Program</option>
+            </select>
+          </div>
+
+          <button class="submit-btn">Submit Inquiry</button>
+
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<footer class="footer">
+
+  <div class="footer-logo">
+    <div class="logo-box">G</div>
+    <h2>GITA UNIVERSITY</h2>
+  </div>
+
+  <p class="footer-desc">
+    Committed to advancing human knowledge through science, art, and innovation.
+    Ranked globally for academic excellence and sustainability.
+  </p>
+
+  <div class="footer-links">
+    <a href="#">Privacy Policy</a>
+    <a href="#">Accreditation</a>
+    <a href="#">Accessibility</a>
+    <a href="#">Careers</a>
+  </div>
+
+  <p class="footer-copy">
+    © 2024 Global Institute of Technology & Arts. All rights reserved.
+  </p>
+
+</footer>
+
+</body>
+</html>
