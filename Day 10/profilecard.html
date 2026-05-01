@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glass Profile Card</title>
+
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+
+    /* fixed gradient colors */
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+  }
+
+  .profile-card {
+    width: 320px;
+    padding: 25px;
+    border-radius: 20px;
+
+    /* glass effect */
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+
+    text-align: center;
+    color: #ffffff;
+  }
+
+  .avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 3px solid rgba(255,255,255,0.5);
+    margin-bottom: 15px;
+  }
+
+  .title {
+    font-size: 20px;
+    margin: 10px 0 5px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    opacity: 0.85;
+  }
+
+  .stats {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+  }
+
+  .stats div h3 {
+    margin: 0;
+  }
+
+  .stats div span {
+    font-size: 12px;
+    opacity: 0.7;
+  }
+
+  .action-btn {
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: none;
+    background: rgba(255,255,255,0.25);
+    color: #ffffff;
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+  }
+
+  .action-btn:hover {
+    background: rgba(255,255,255,0.4);
+  }
+</style>
+</head>
+
+<body>
+
+<div class="profile-card">
+  <img class="avatar" src="https://i.pravatar.cc/150?img=5" alt="avatar">
+
+  <div class="title">Profile Title</div>
+  <div class="subtitle">Short description</div>
+
+  <div class="stats">
+    <div>
+      <h3>120</h3>
+      <span>Items</span>
+    </div>
+    <div>
+      <h3>2.5K</h3>
+      <span>Users</span>
+    </div>
+    <div>
+      <h3>300</h3>
+      <span>Views</span>
+    </div>
+  </div>
+
+  <button class="action-btn">Action</button>
+</div>
+
+</body>
+</html>
