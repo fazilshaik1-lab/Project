@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bridge</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+
+/* BACKGROUND IMAGE */
+.hero-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.drop-top {
+  position: absolute;
+  left: 10%;
+  top: 250px;
+
+  width: 100px; /* smaller base size */
+
+  transform: translateX(-50%);
+  animation: dropTopSpin 3s ease-out forwards;
+}
+
+/* IMPORTANT: always include translateX in every step */
+@keyframes dropTopSpin {
+
+  0% {
+    top: -250px;
+    opacity: 0;
+    transform: translateX(-50%) scale(0.4) rotate(-180deg);
+  }
+
+  50% {
+    top: 40%;
+    opacity: 1;
+    transform: translateX(-50%) scale(0.7) rotate(120deg);
+  }
+
+  80% {
+    top: 65%; /* lower than before */
+    transform: translateX(-50%) scale(1.05) rotate(-10deg);
+  }
+
+  100% {
+    top: 70%; /* FINAL LOWER POSITION */
+    transform: translateX(-50%) scale(1) rotate(0deg);
+  }
+}
+
+
+/* OVERLAY IMAGE */
+.overlay-img {
+  position: absolute;
+  top: 50%;
+  left: 48%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.overlay-img img {
+  max-width: 1000px;
+}
+
+/* NAVBAR */
+.navbar {
+  position: absolute;
+  top: 25px;
+  left: 50px;
+  right: 50px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  color: white;
+  z-index: 3;
+}
+
+.logo {
+  font-size: 36px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 40px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+}
+
+.social-icons {
+  display: flex;
+  gap: 10px;
+}
+
+.social-icons i {
+  width: 35px;
+  height: 35px;
+  background: #e6cfd8;
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+    cursor: pointer;
+  transition: 0.3s;
+  color: black;
+}
+
+.social-icons i:hover {
+  background: white;
+}
+
+
+/* FIXED ELEMENTS */
+.info-box {
+  position: fixed;
+  right: 0px;
+  top: 60%;
+  background: #ededed;
+  padding: 15px 20px;
+  z-index: 1000;
+}
+
+.buy-btn {
+  position: fixed;
+  right: 0px;
+  top: calc(60% + 60px);
+  background: #ff2b55;
+  color: white;
+  padding: 15px 20px;
+  z-index: 1000;
+}
+
+/* SCROLL TO TOP BUTTON */
+.scroll-top {
+  position: fixed;
+  right: 0;
+  top: calc(60% + 105px); 
+
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+
+  border: 2px solid #f3c6d3;
+  color: #f3c6d3;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-decoration: none;
+  font-size: 18px;
+
+  background: transparent;
+  z-index: 1000;
+
+  transition: 0.3s;
+}
+
+/* HOVER EFFECT */
+.scroll-top:hover {
+  background: #393133;
+  color: white;
+}
+
+/* SECTION */
+.artisan {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 80px 100px;
+  background: #f3f3f3;
+}
+
+/* IMAGE */
+.image-box {
+  width: 50%;
+}
+
+.image-box img {
+  width: 100%;
+  max-width: 500px;
+}
+
+/* CONTENT */
+.content {
+  width: 45%;
+}
+
+/* HEADING */
+.content h1 {
+  font-size: 60px;
+  font-family: serif;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.content h1 span {
+  font-style: italic;
+}
+
+/* TEXT */
+.content p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+/* BUTTON */
+.read-btn {
+  padding: 14px 30px;
+  border: 1px solid #333;
+  background: transparent;
+  letter-spacing: 3px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* HOVER EFFECT */
+.read-btn:hover {
+  background: black;
+  color: white;
+  border-color: black;
+}
+
+/* SECTION */
+.gallery {
+  display: flex;
+  gap: 30px;
+  padding: 80px 100px;
+  background: #f3f3f3;
+}
+
+/* CARD */
+.card {
+  position: relative;
+  width: 33%;
+  overflow: hidden;
+}
+
+/* IMAGE */
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* OVERLAY */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  opacity: 0;
+  transition: 0.4s ease;
+}
+
+/* TEXT */
+.overlay h2 {
+  font-size: 40px;
+  font-family: serif;
+}
+
+/* HOVER EFFECT */
+.card:hover .overlay {
+  opacity: 1;
+}
+
+/* slight zoom */
+.card:hover img {
+  transform: scale(1.05);
+  transition: 0.4s ease;
+}
+/* SECTION */
+.features {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  padding: 80px 100px;
+  background: #f3f3f3;
+}
+
+/* ITEM */
+.item {
+  width: 22%;
+}
+
+/* IMAGE */
+.item img {
+  width: 250px;
+  margin-bottom: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right:auto;
+}
+
+/* TITLE */
+.item h3 {
+  font-size: 28px;
+  font-family: serif;
+  margin-bottom: 15px;
+}
+
+.item h3 span {
+  font-style: italic;
+  font-weight: bold;
+}
+
+/* TEXT */
+.item p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #666;
+  padding: 0 10px;
+}
+/* SECTION */
+.video-section {
+  width: 100%;
+  overflow: hidden;
+}
+
+/* VIDEO CONTAINER */
+.video-box {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+}
+
+/* IMAGE */
+.video-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.5s ease;
+}
+
+/* HOVER ZOOM */
+.video-box:hover img {
+  transform: scale(1.08);
+}
+
+/* PLAY BUTTON */
+.play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.9);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-decoration: none;
+  color: black;
+  font-size: 22px;
+
+  box-shadow: 0 0 0 8px rgba(255,255,255,0.3);
+  transition: 0.3s;
+}
+
+/* HOVER EFFECT ON BUTTON */
+.play-btn:hover {
+  background: white;
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* SECTION */
+.reviews {
+  position: relative;
+  padding: 120px 100px;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* BACKGROUND IMAGE */
+.bg-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 900px;
+  opacity: 0.9;
+  z-index: 1;
+}
+
+/* CONTENT */
+.review-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* HEADING */
+.review-content h1 {
+  font-size: 70px;
+  font-family: serif;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.review-content h1 span {
+  font-style: italic;
+}
+
+/* TEXT */
+.review-content p {
+  max-width: 900px;
+  margin: 0 auto 30px;
+  font-size: 18px;
+  line-height: 1.7;
+  color: #666;
+}
+
+/* NAME */
+.review-content h3 {
+  font-size: 28px;
+  font-family: serif;
+}
+
+/* MAP */
+.map-section {
+  height: 500px;
+}
+
+.map-section iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* CONTACT OVERLAY */
+.contact {
+  width: 85%;
+  margin: -150px auto -50px;
+
+
+  background: #f3f3f3;
+  padding: 60px 80px;
+
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+
+  position: relative;
+  z-index: 2;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* LEFT FORM */
+.form-box {
+  width: 50%;
+}
+
+.form-box input,
+.form-box textarea {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #333;
+  background: transparent;
+
+  padding: 15px 0;
+  margin-bottom: 30px;
+  font-size: 16px;
+  outline: none;
+}
+
+.form-box textarea {
+  height: 80px;
+  resize: none;
+}
+
+/* BUTTON */
+.form-box button {
+  padding: 14px 40px;
+  border: 1px solid #333;
+  background: transparent;
+  letter-spacing: 4px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.form-box button:hover {
+  background: black;
+  color: white;
+}
+
+/* RIGHT CONTENT */
+.contact-info {
+  width: 45%;
+}
+
+.contact-info h1 {
+  font-size: 60px;
+  font-family: serif;
+  margin-bottom: 20px;
+}
+
+.contact-info h1 span {
+  font-style: italic;
+}
+
+.contact-info p {
+  font-size: 18px;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.timing {
+  margin-top: 20px;
+}
+
+/* SECTION */
+.gallery-section {
+  padding: 80px 100px;
+
+}
+
+/* TOP IMAGE */
+.top-banner img {
+  width: 100%;
+  display: block;
+  margin-bottom: -200px;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+/* IMAGES */
+.grid-item img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* HOVER */
+.grid-item {
+  overflow: hidden;
+}
+
+.grid-item img {
+  transition: 0.4s;
+}
+
+.grid-item:hover img {
+  transform: scale(1.05);
+  
+}
+
+/* FOOTER */
+.footer {
+  position: relative;
+  padding: 100px 20px;
+  text-align: center;
+  color: white;
+
+  background: url('https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/footer-img.jpg') no-repeat center/cover;
+}
+
+
+/* CONTENT */
+.footer-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* LOGO */
+.footer-logo {
+  width: 120px;
+  margin-bottom: 20px;
+}
+
+/* TEXT */
+.footer-content p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+/* ICONS */
+.footer-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+/* ICON STYLE */
+.footer-icons i {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: #e6cfd8;
+  color: black;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* HOVER */
+.footer-icons i:hover {
+  background: white;
+}
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+
+  <!-- BACKGROUND -->
+  <div class="hero-bg">
+    <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/slider-background.jpg" alt="main-image">
+  </div>
+
+  <!-- OVERLAY IMAGE -->
+  <div class="overlay-img">
+    <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/slider-graphic-3.png" alt="">
+  </div>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/logo.png" alt="logo" class="footer-logo">
+
+
+    <!-- TOP DROP -->
+<img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/graphic-1.png" class="drop-top" alt="">
+
+
+    <nav class="nav-links">
+      <a href="#">HOME</a>
+      <a href="#">TEAM</a>
+      <a href="#">ABOUT</a>
+      <a href="#">CONTACT</a>
+    </nav>
+
+    <div class="social-icons">
+      <i class="fa-brands fa-facebook-f"></i>
+      <i class="fa-brands fa-twitter"></i>
+      <i class="fa-brands fa-instagram"></i>
+    </div>
+  </header>
+
+</section>
+
+<!-- FIXED ELEMENTS -->
+<div class="info-box">
+  <strong>630+</strong> bridge demos
+</div>
+
+<div class="buy-btn">
+  <i class="fa-solid fa-bag-shopping"></i> BUY NOW $69
+</div>
+
+<a href="#" class="scroll-top">
+  <i class="fa-solid fa-chevron-up"></i>
+</a>
+
+<section class="artisan">
+
+  <!-- LEFT single image -->
+  <div class="image-box">
+    <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/h1-img-1.jpg" alt="stamp">
+  </div>
+
+  <!-- RIGHT CONTENT -->
+  <div class="content">
+    <h1><span>Artisan</span><br>chocolatier</h1>
+
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      Ut enim ad minim veniam quis nostrud exercitation.
+    </p>
+
+    <button class="read-btn">READ ALL</button>
+  </div>
+
+</section>
+
+<section class="gallery">
+
+  <div class="card">
+    <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/banner-1.jpg" alt="">
+    <div class="overlay">
+      <h2><strong>Love</strong><br>Chocolate</h2>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/banner-2.jpg" alt="">
+    <div class="overlay">
+      <h2><em>Workshop</em><br>Registration</h2>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/banner-3.jpg" alt="">
+    <div class="overlay">
+      <h2><em>Think</em><br> Chocolate</h2>
+    </div>
+  </div>
+
+</section>
+
+<section class="features">
+
+  <div class="item">
+    <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/icon-1.jpg" alt="">
+    <h3><span>Peper &</span> sweet</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+  </div>
+
+  <div class="item">
+    <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/icon-2.jpg" alt="">
+    <h3><span>Mint &</span> sweet</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+  </div>
+
+  <div class="item">
+    <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/icon-3.jpg" alt="">
+    <h3><span>Hazelnut</span> caramel</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+  </div>
+
+  <div class="item">
+    <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/icon-4.jpg" alt="">
+    <h3><span>Chilli &</span> sweet</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
+  </div>
+
+</section>
+
+<section class="video-section">
+
+  <div class="video-box">
+    <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/video-background.jpg" alt="">
+
+    <!-- PLAY BUTTON -->
+    <a href="https://vimeo.com/109264555" target="_blank" class="play-btn">
+      <i class="fa-solid fa-play"></i>
+    </a>
+  </div>
+
+</section>
+
+<section class="reviews">
+
+  <!-- BACKGROUND TEXT IMAGE -->
+  <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/testimonials-background.png?id=74" class="bg-img" alt="">
+
+  <div class="review-content">
+    <h1><span>Chocolate</span> reviews</h1>
+
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip
+    </p>
+
+    <h3>Medison Jonn</h3>
+  </div>
+
+</section>
+
+<section class="map-section">
+  <iframe 
+    src="https://www.google.com/maps?q=Sydney&output=embed">
+  </iframe>
+</section>
+
+<section class="contact">
+
+  <!-- LEFT FORM -->
+  <div class="form-box">
+    <form>
+      <input type="text" placeholder="Name*" required>
+      <input type="email" placeholder="Email*" required>
+      <textarea placeholder="Message"></textarea>
+
+      <button type="submit">SEND</button>
+    </form>
+  </div>
+
+  <!-- RIGHT CONTENT -->
+  <div class="contact-info">
+    <h1><span>Visit</span> our shops</h1>
+
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+      sed do eiusmod tempor incididunt ut labore.
+    </p>
+
+    <p class="timing">09:00–19h Monday – Friday</p>
+    <p>75–11 Jewett Ave Jersey City, NJ 07304 USA</p>
+    <p>+ (1) 555 678 786</p>
+  </div>
+
+</section>
+
+<section class="gallery-section">
+
+  <!-- TOP IMAGE -->
+  <div class="top-banner">
+    <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/background-img-2.jpg" alt="">
+  </div>
+
+  <!-- GRID -->
+  <div class="grid">
+
+    <div class="grid-item">
+      <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/img-gallery-6.jpg" alt="">
+    </div>
+
+    <div class="grid-item">
+      <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/img-gallery-5.jpg" alt="">
+    </div>
+
+    <div class="grid-item">
+      <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/img-gallery-4.jpg" alt="">
+    </div>
+
+    <div class="grid-item">
+      <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/img-gallery-3.jpg" alt="">
+    </div>
+
+    <div class="grid-item">
+      <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/img-gallery-2.jpg" alt="">
+    </div>
+
+    <div class="grid-item">
+      <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/img-gallery-1.jpg" alt="">
+    </div>
+
+  </div>
+
+</section>
+<footer class="footer">
+
+  <!-- CONTENT -->
+  <div class="footer-content">
+
+    <!-- LOGO -->
+    <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/logo.png" alt="logo" class="footer-logo">
+
+    <!-- TEXT -->
+    <p>
+      © Copyright Qode Interactive — All Rights Reserved<br>
+      Proudly Made For You.
+    </p>
+
+    <!-- SOCIAL ICONS -->
+    <div class="footer-icons">
+      <i class="fa-brands fa-facebook-f"></i>
+      <i class="fa-brands fa-twitter"></i>
+      <i class="fa-brands fa-instagram"></i>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+</html>
