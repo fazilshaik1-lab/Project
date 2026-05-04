@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+
+/* BACKGROUND IMAGE */
+.hero-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+
+/* NAVBAR */
+.navbar {
+  position: absolute;
+  top: 25px;
+  left: 50px;
+  right: 50px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  color: white;
+  z-index: 3;
+}
+
+.logo {
+  font-size: 36px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 40px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+}
+
+.social-icons {
+  display: flex;
+  gap: 10px;
+}
+
+.social-icons i {
+  width: 35px;
+  height: 35px;
+  background: #e6cfd8;
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+    cursor: pointer;
+  transition: 0.3s;
+  color: black;
+}
+
+.social-icons i:hover {
+  background: white;
+}
+
+
+/* FIXED ELEMENTS */
+.info-box {
+  position: fixed;
+  right: 0px;
+  top: 60%;
+  background: #ededed;
+  padding: 15px 20px;
+  z-index: 1000;
+}
+
+.buy-btn {
+  position: fixed;
+  right: 0px;
+  top: calc(60% + 60px);
+  background: #ff2b55;
+  color: white;
+  padding: 15px 20px;
+  z-index: 1000;
+}
+
+/* SCROLL TO TOP BUTTON */
+.scroll-top {
+  position: fixed;
+  right: 0;
+  top: calc(60% + 105px); 
+
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+
+  border: 2px solid #f3c6d3;
+  color: #f3c6d3;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-decoration: none;
+  font-size: 18px;
+
+  background: transparent;
+  z-index: 1000;
+
+  transition: 0.3s;
+}
+
+/* HOVER EFFECT */
+.scroll-top:hover {
+  background: #393133;
+  color: white;
+}
+/* SECTION */
+.artisan {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 80px 100px;
+  background: #f3f3f3;
+}
+
+/* IMAGE */
+.image-box {
+  width: 50%;
+}
+
+.image-box img {
+  width: 100%;
+  max-width: 500px;
+}
+
+/* CONTENT */
+.content {
+  width: 45%;
+}
+
+/* HEADING */
+.content h1 {
+  font-size: 60px;
+  font-family: serif;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.content h1 span {
+  font-style: italic;
+}
+
+/* TEXT */
+.content p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+/* BUTTON */
+.read-btn {
+  padding: 14px 30px;
+  border: 1px solid #333;
+  background: transparent;
+  letter-spacing: 3px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* HOVER EFFECT */
+.read-btn:hover {
+  background: black;
+  color: white;
+  border-color: black;
+}
+
+/* SECTION */
+.gallery {
+  display: flex;
+  gap: 30px;
+  padding: 80px 100px;
+  background: #f3f3f3;
+}
+
+/* CARD */
+.card {
+  position: relative;
+  width: 33%;
+  overflow: hidden;
+}
+
+/* IMAGE */
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* OVERLAY */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  opacity: 0;
+  transition: 0.4s ease;
+}
+
+/* TEXT */
+.overlay h2 {
+  font-size: 40px;
+  font-family: serif;
+}
+
+/* HOVER EFFECT */
+.card:hover .overlay {
+  opacity: 1;
+}
+
+/* slight zoom */
+.card:hover img {
+  transform: scale(1.05);
+  transition: 0.4s ease;
+}
+
+
+/* FOOTER */
+.footer {
+  position: relative;
+  padding: 100px 20px;
+  text-align: center;
+  color: white;
+
+  background: url('https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/footer-img.jpg') no-repeat center/cover;
+}
+
+
+/* CONTENT */
+.footer-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* LOGO */
+.footer-logo {
+  width: 120px;
+  margin-bottom: 20px;
+}
+
+/* TEXT */
+.footer-content p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+/* ICONS */
+.footer-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+/* ICON STYLE */
+.footer-icons i {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: #e6cfd8;
+  color: black;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* HOVER */
+.footer-icons i:hover {
+  background: white;
+}
+
+.hero-title {
+  position: absolute;
+  top: 52%;
+  left: 52%;
+  transform: translate(-50%, -50%);
+
+  font-family: 'Playfair Display', serif;
+  font-size: 80px;
+  font-weight: 400;
+  color: white;
+
+  line-height: 1.1;
+}
+
+</style>
+
+</head>
+<body>
+    <section class="hero">
+
+  <!-- BACKGROUND -->
+  <div class="hero-bg">
+    <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/slider-background.jpg" alt="main-image">
+    <h1 class="hero-title">About</h1>
+</div>
+
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/logo.png" alt="logo" class="footer-logo">
+
+
+    
+
+    <nav class="nav-links">
+      <a href="landingpage.html">HOME</a>
+      <a href="teampage.html">TEAM</a>
+      <a href="#">ABOUT</a>
+      <a href="contact.html">CONTACT</a>
+    </nav>
+
+    <div class="social-icons">
+      <i class="fa-brands fa-facebook-f"></i>
+      <i class="fa-brands fa-twitter"></i>
+      <i class="fa-brands fa-instagram"></i>
+    </div>
+  </header>
+
+  <!-- FIXED ELEMENTS -->
+<div class="info-box">
+  <strong>630+</strong> bridge demos
+</div>
+
+<div class="buy-btn">
+  <i class="fa-solid fa-bag-shopping"></i> BUY NOW $69
+</div>
+
+<a href="#" class="scroll-top">
+  <i class="fa-solid fa-chevron-up"></i>
+</a>
+</section>
+
+<section class="artisan">
+
+  <!-- LEFT single image -->
+  <div class="image-box">
+    <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/h1-img-1.jpg" alt="stamp">
+  </div>
+
+  <!-- RIGHT CONTENT -->
+  <div class="content">
+    <h1><span>Artisan</span><br>chocolatier</h1>
+
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      Ut enim ad minim veniam quis nostrud exercitation.
+    </p>
+
+    <button class="read-btn">READ ALL</button>
+  </div>
+
+</section>
+
+<section class="gallery">
+
+  <div class="card">
+    <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/banner-1.jpg" alt="">
+    <div class="overlay">
+      <h2><strong>Love</strong><br>Chocolate</h2>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/banner-2.jpg" alt="">
+    <div class="overlay">
+      <h2><em>Workshop</em><br>Registration</h2>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/banner-3.jpg" alt="">
+    <div class="overlay">
+      <h2><em>Think</em><br> Chocolate</h2>
+    </div>
+  </div>
+
+</section>
+
+<footer class="footer">
+
+  <!-- CONTENT -->
+  <div class="footer-content">
+
+    <!-- LOGO -->
+    <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/logo.png" alt="logo" class="footer-logo">
+
+    <!-- TEXT -->
+    <p>
+      © Copyright Qode Interactive — All Rights Reserved<br>
+      Proudly Made For You.
+    </p>
+
+    <!-- SOCIAL ICONS -->
+    <div class="footer-icons">
+      <i class="fa-brands fa-facebook-f"></i>
+      <i class="fa-brands fa-twitter"></i>
+      <i class="fa-brands fa-instagram"></i>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+</html>

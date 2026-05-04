@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+
+/* BACKGROUND IMAGE */
+.hero-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.drop-top {
+  position: absolute;
+  left: 10%;
+  top: 250px;
+
+  width: 100px; /* smaller base size */
+
+  transform: translateX(-50%);
+  animation: dropTopSpin 3s ease-out forwards;
+}
+
+/* IMPORTANT: always include translateX in every step */
+@keyframes dropTopSpin {
+
+  0% {
+    top: -250px;
+    opacity: 0;
+    transform: translateX(-50%) scale(0.4) rotate(-180deg);
+  }
+
+  50% {
+    top: 40%;
+    opacity: 1;
+    transform: translateX(-50%) scale(0.7) rotate(120deg);
+  }
+
+  80% {
+    top: 65%; /* lower than before */
+    transform: translateX(-50%) scale(1.05) rotate(-10deg);
+  }
+
+  100% {
+    top: 70%; /* FINAL LOWER POSITION */
+    transform: translateX(-50%) scale(1) rotate(0deg);
+  }
+}
+
+
+/* NAVBAR */
+.navbar {
+  position: absolute;
+  top: 25px;
+  left: 50px;
+  right: 50px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  color: white;
+  z-index: 3;
+}
+
+.logo {
+  font-size: 36px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 40px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+}
+
+.social-icons {
+  display: flex;
+  gap: 10px;
+}
+
+.social-icons i {
+  width: 35px;
+  height: 35px;
+  background: #e6cfd8;
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+    cursor: pointer;
+  transition: 0.3s;
+  color: black;
+}
+
+.social-icons i:hover {
+  background: white;
+}
+
+
+/* FIXED ELEMENTS */
+.info-box {
+  position: fixed;
+  right: 0px;
+  top: 60%;
+  background: #ededed;
+  padding: 15px 20px;
+  z-index: 1000;
+}
+
+.buy-btn {
+  position: fixed;
+  right: 0px;
+  top: calc(60% + 60px);
+  background: #ff2b55;
+  color: white;
+  padding: 15px 20px;
+  z-index: 1000;
+}
+
+/* SCROLL TO TOP BUTTON */
+.scroll-top {
+  position: fixed;
+  right: 0;
+  top: calc(60% + 105px); 
+
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+
+  border: 2px solid #f3c6d3;
+  color: #f3c6d3;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-decoration: none;
+  font-size: 18px;
+
+  background: transparent;
+  z-index: 1000;
+
+  transition: 0.3s;
+}
+
+/* HOVER EFFECT */
+.scroll-top:hover {
+  background: #393133;
+  color: white;
+}
+/* MAIN LAYOUT */
+.history {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 100px 120px;
+  background: #ede2e6;
+  gap: 60px;
+}
+
+/* LEFT */
+.history-left {
+  flex: 1;
+}
+
+.history-left h1 {
+  font-size: 70px;
+  font-family: serif;
+  color: #333;
+  margin-bottom: 20px;
+  line-height: 1.1;
+}
+
+.history-left span {
+  font-style: italic;
+}
+
+.history-left p {
+  font-size: 18px;
+  color: #666;
+  line-height: 1.7;
+  margin-bottom: 30px;
+  max-width: 500px;
+}
+
+/* BUTTON FIX */
+.read-btn {
+  display: inline-block; 
+  padding: 14px 35px;
+  border: 1px solid #333;
+  text-decoration: none;
+  color: #333;
+  letter-spacing: 4px;
+  transition: 0.3s;
+}
+
+.read-btn:hover {
+  background: #000;
+  color: #fff;
+}
+
+/* RIGHT */
+.history-right {
+  flex: 1;
+}
+
+.history-right img {
+  width: 100%;
+  display: block;
+}
+
+/* SECTION */
+.history-alt {
+  display: flex;
+  align-items: center;
+
+  padding: 100px 0;
+  background: #f3f3f3;
+}
+
+/* LEFT IMAGE */
+.history-img {
+  width: 50%;
+  padding-left: 80px; 
+}
+
+.history-img img {
+  width: 100%;
+  display: block;
+  filter: grayscale(100%);
+}
+
+/* RIGHT SIDE PANEL */
+.history-content {
+  width: 50%;
+  padding: 80px;
+
+  background:#f3f3f3;
+}
+
+/* HEADING */
+.history-content h1 {
+  font-size: 70px;
+  font-family: serif;
+  color: #333;
+  margin-bottom: 20px;
+  line-height: 1.1;
+}
+
+.history-content h1 span {
+  font-style: italic;
+}
+
+/* TEXT */
+.history-content p {
+  font-size: 18px;
+  color: #666;
+  line-height: 1.7;
+  margin-bottom: 30px;
+  max-width: 500px;
+}
+
+/* BUTTON */
+.read-btn {
+  display: inline-block;
+  padding: 14px 35px;
+  border: 1px solid #333;
+  text-decoration: none;
+  color: #333;
+  letter-spacing: 4px;
+  transition: 0.3s;
+}
+
+.read-btn:hover {
+  background: #000;
+  color: #fff;
+}
+/* FOOTER */
+.footer {
+  position: relative;
+  padding: 100px 20px;
+  text-align: center;
+  color: white;
+
+  background: url('https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/footer-img.jpg') no-repeat center/cover;
+}
+
+
+/* CONTENT */
+.footer-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* LOGO */
+.footer-logo {
+  width: 120px;
+  margin-bottom: 20px;
+}
+
+/* TEXT */
+.footer-content p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+/* ICONS */
+.footer-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+/* ICON STYLE */
+.footer-icons i {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: #e6cfd8;
+  color: black;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* HOVER */
+.footer-icons i:hover {
+  background: white;
+}
+
+.hero-title {
+  position: absolute;
+  top: 52%;
+  left: 52%;
+  transform: translate(-50%, -50%);
+
+  font-family: 'Playfair Display', serif;
+  font-size: 80px;
+  font-weight: 400;
+  color: white;
+
+  line-height: 1.1;
+}
+
+</style>
+
+</head>
+<body>
+    <section class="hero">
+
+  <!-- BACKGROUND -->
+  <div class="hero-bg">
+    <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/slider-background.jpg" alt="main-image">
+    <h1 class="hero-title">Our team</h1>
+</div>
+  
+
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/logo.png" alt="logo" class="footer-logo">
+
+
+    <nav class="nav-links">
+      <a href="landingpage.html">HOME</a>
+      <a href="#">TEAM</a>
+      <a href="about.html">ABOUT</a>
+      <a href="contact.html">CONTACT</a>
+    </nav>
+
+    <div class="social-icons">
+      <i class="fa-brands fa-facebook-f"></i>
+      <i class="fa-brands fa-twitter"></i>
+      <i class="fa-brands fa-instagram"></i>
+    </div>
+  </header>
+   <!-- FIXED ELEMENTS -->
+<div class="info-box">
+  <strong>630+</strong> bridge demos
+</div>
+
+<div class="buy-btn">
+  <i class="fa-solid fa-bag-shopping"></i> BUY NOW $69
+</div>
+
+<a href="#" class="scroll-top">
+  <i class="fa-solid fa-chevron-up"></i>
+</a>
+  </section>
+
+  <section class="history">
+
+  <div class="history-left">
+    <h1>
+      <span>History</span><br>
+      of manufacturer
+    </h1>
+
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      Ut enim ad minim veniam quis nostrud exercitation.
+    </p>
+
+    <a href="#" class="read-btn">READ ALL</a>
+  </div>
+
+  <div class="history-right">
+    <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/team-1.png" alt="">
+  </div>
+
+</section>
+
+<section class="history-alt">
+
+  <!-- LEFT IMAGE -->
+  <div class="history-img">
+    <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/team-2.png" alt="">
+  </div>
+
+  <!-- RIGHT CONTENT -->
+  <div class="history-content">
+    <h1>
+      <span>History</span><br>
+      of manufacturer
+    </h1>
+
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      Ut enim ad minim veniam quis nostrud exercitation.
+    </p>
+
+    <a href="#" class="read-btn">READ ALL</a>
+  </div>
+
+</section>
+
+<!--Footer-->
+
+    <footer class="footer">
+
+  <!-- CONTENT -->
+  <div class="footer-content">
+
+    <!-- LOGO -->
+    <img src="https://bridge248.qodeinteractive.com/wp-content/uploads/2018/06/logo.png" alt="logo" class="footer-logo">
+
+    <!-- TEXT -->
+    <p>
+      © Copyright Qode Interactive — All Rights Reserved<br>
+      Proudly Made For You.
+    </p>
+
+    <!-- SOCIAL ICONS -->
+    <div class="footer-icons">
+      <i class="fa-brands fa-facebook-f"></i>
+      <i class="fa-brands fa-twitter"></i>
+      <i class="fa-brands fa-instagram"></i>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+</html>
