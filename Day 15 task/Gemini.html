@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Nova Glassmorphism</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    /* RESET */
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Poppins',sans-serif;
+      overflow-x:hidden;
+
+      background:
+      linear-gradient(
+        135deg,
+        #3f1268 0%,
+        #6d1b93 30%,
+        #b300b3 55%,
+        #08203d 78%,
+        #009fa9 100%
+      );
+
+      min-height:100vh;
+    }
+
+    /* GLOBAL GLOW */
+    body::before{
+      content:"";
+
+      position:fixed;
+      inset:0;
+
+      background:
+      radial-gradient(circle at 30% 40%,
+      rgba(255,0,255,0.35),
+      transparent 35%),
+
+      radial-gradient(circle at 85% 55%,
+      rgba(0,229,255,0.28),
+      transparent 30%),
+
+      radial-gradient(circle at 55% 10%,
+      rgba(255,255,255,0.12),
+      transparent 15%);
+
+      filter:blur(60px);
+
+      z-index:-1;
+    }
+
+    /* MAIN WRAPPER */
+    .site-wrapper{
+      position:relative;
+      min-height:100vh;
+    }
+
+    /* STICKY NAVBAR */
+    .glass-nav{
+      position:sticky;
+      top:0;
+      z-index:1000;
+
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+
+      padding:22px 70px;
+
+      backdrop-filter:blur(18px);
+
+      background:rgba(15,15,25,0.22);
+
+      border-bottom:
+      1px solid rgba(255,255,255,0.08);
+    }
+
+    /* LOGO */
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:16px;
+    }
+
+    .diamond{
+      width:18px;
+      height:18px;
+
+      border:3px solid #00e5ff;
+
+      transform:rotate(45deg);
+    }
+
+    .logo h2{
+      color:white;
+
+      font-size:40px;
+      font-weight:700;
+    }
+
+    .logo h2 span{
+      color:#00e5ff;
+    }
+
+    /* NAV BUTTON */
+    .nav-btn{
+      text-decoration:none;
+
+      padding:16px 38px;
+
+      border-radius:50px;
+
+      color:white;
+
+      font-size:18px;
+      font-weight:600;
+
+      background:
+      linear-gradient(
+        90deg,
+        #8a2be2,
+        #00e5ff
+      );
+
+      transition:0.4s ease;
+    }
+
+    .nav-btn:hover{
+      transform:
+      translateY(-4px)
+      scale(1.03);
+    }
+
+    /* HERO SECTION */
+    .glass-hero{
+      min-height:100vh;
+
+      display:flex;
+      justify-content:center;
+      align-items:center;
+
+      padding:100px 20px;
+    }
+
+    /* HERO CONTENT */
+    .glass-content{
+      text-align:center;
+      max-width:1000px;
+    }
+
+    .glass-content h1{
+      color:white;
+
+      font-size:95px;
+      line-height:1;
+
+      font-weight:700;
+
+      margin-bottom:30px;
+    }
+
+    .glass-content p{
+      color:rgba(255,255,255,0.72);
+
+      font-size:24px;
+      line-height:1.7;
+
+      max-width:850px;
+
+      margin:auto;
+      margin-bottom:50px;
+    }
+
+    /* HERO BUTTON */
+    .hero-btn{
+      padding:18px 48px;
+
+      border:none;
+      border-radius:60px;
+
+      color:white;
+
+      font-size:22px;
+      font-weight:600;
+
+      cursor:pointer;
+
+      background:
+      linear-gradient(
+        90deg,
+        #8a2be2,
+        #00e5ff
+      );
+
+      transition:0.4s ease;
+    }
+
+    .hero-btn:hover{
+      transform:
+      translateY(-5px)
+      scale(1.03);
+    }
+
+    /* FEATURES SECTION */
+    .glass-features{
+      min-height:100vh;
+
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+
+      padding:80px 70px 40px;
+    }
+
+    /* CARD ROW */
+    .feature-cards{
+      display:flex;
+      justify-content:center;
+      gap:35px;
+
+      margin-bottom:140px;
+    }
+
+    /* CARD */
+    .glass-card{
+      width:340px;
+
+      padding:35px;
+
+      border-radius:28px;
+
+      backdrop-filter:blur(18px);
+
+      background:
+      rgba(255,255,255,0.06);
+
+      border:
+      1px solid rgba(255,255,255,0.12);
+
+      box-shadow:
+      0 8px 32px rgba(0,0,0,0.25);
+
+      transition:0.45s ease;
+    }
+
+    .glass-card:hover{
+      transform:
+      translateY(-14px);
+
+      background:
+      rgba(255,255,255,0.09);
+    }
+
+    /* ICON BOX */
+    .icon-box{
+      width:58px;
+      height:58px;
+
+      display:flex;
+      justify-content:center;
+      align-items:center;
+
+      border-radius:18px;
+
+      margin-bottom:28px;
+
+      font-size:26px;
+
+      color:#00e5ff;
+
+      background:
+      rgba(255,255,255,0.08);
+
+      border:
+      1px solid rgba(255,255,255,0.1);
+    }
+
+    /* CARD TITLE */
+    .glass-card h2{
+      color:white;
+
+      font-size:32px;
+      line-height:1.2;
+
+      margin-bottom:18px;
+    }
+
+    /* CARD TEXT */
+    .glass-card p{
+      color:rgba(255,255,255,0.72);
+
+      font-size:18px;
+      line-height:1.8;
+    }
+
+    /* FOOTER */
+    .glass-footer{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+
+      padding-top:30px;
+
+      border-top:
+      1px solid rgba(255,255,255,0.08);
+    }
+
+    .glass-footer p{
+      color:rgba(255,255,255,0.65);
+
+      font-size:15px;
+    }
+
+    /* FOOTER LINKS */
+    .footer-links{
+      display:flex;
+      gap:40px;
+    }
+
+    .footer-links a{
+      text-decoration:none;
+
+      color:rgba(255,255,255,0.65);
+
+      font-size:15px;
+
+      transition:0.3s ease;
+    }
+
+    .footer-links a:hover{
+      color:white;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="site-wrapper">
+
+    <!-- NAVBAR -->
+    <header class="glass-nav">
+
+      <div class="logo">
+
+        <span class="diamond"></span>
+
+        <h2>
+          Nova <span>.</span>
+        </h2>
+
+      </div>
+
+      <a href="#" class="nav-btn">
+        Get Started
+      </a>
+
+    </header>
+
+    <!-- HERO -->
+    <section class="glass-hero">
+
+      <div class="glass-content">
+
+        <h1>
+          Connect in the <br>
+          Speed of Light
+        </h1>
+
+        <p>
+          A completely revolutionized team messaging platform.
+          Secure, instantaneous, and designed to look as good
+          as it performs.
+        </p>
+
+        <button class="hero-btn">
+          Experience Nova
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- FEATURES -->
+    <section class="glass-features">
+
+      <div class="feature-cards">
+
+        <!-- CARD 1 -->
+        <div class="glass-card">
+
+          <div class="icon-box">
+            ⚡
+          </div>
+
+          <h2>
+            Real-time Sync
+          </h2>
+
+          <p>
+            Collaborate with your team instantly across
+            the globe. Our distributed network ensures
+            messages arrive before you blink.
+          </p>
+
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="glass-card">
+
+          <div class="icon-box">
+            🔒
+          </div>
+
+          <h2>
+            End-to-End Encrypted
+          </h2>
+
+          <p>
+            Your data belongs to you. Military-grade
+            encryption protects your conversations
+            from prying eyes at every step.
+          </p>
+
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="glass-card">
+
+          <div class="icon-box">
+            ⚙
+          </div>
+
+          <h2>
+            Custom Workflows
+          </h2>
+
+          <p>
+            Tailor the platform to your needs.
+            Create automated bots, integrate tools,
+            and streamline your operations seamlessly.
+          </p>
+
+        </div>
+
+      </div>
+
+      <!-- FOOTER -->
+      <footer class="glass-footer">
+
+        <p>
+          © 2026 Nova Communications.
+          All rights reserved.
+        </p>
+
+        <div class="footer-links">
+
+          <a href="#">
+            Privacy Policy
+          </a>
+
+          <a href="#">
+            Terms of Service
+          </a>
+
+          <a href="#">
+            Contact Us
+          </a>
+
+        </div>
+
+      </footer>
+
+    </section>
+
+  </div>
+
+</body>
+</html>
