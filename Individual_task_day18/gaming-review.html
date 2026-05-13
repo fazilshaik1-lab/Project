@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Game Reviews</title>
+
+    <!-- FONT AWESOME -->
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background: #050505;
+            color: white;
+        }
+
+        a{
+            text-decoration: none;
+            color: white;
+        }
+
+        img{
+            width: 100%;
+            display: block;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        header{
+
+            width: 100%;
+
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            z-index: 1000;
+
+            padding: 20px 8%;
+        }
+
+        nav{
+
+            display: flex;
+
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 18px 35px;
+
+            border-radius: 20px;
+
+            background: rgba(255,255,255,0.08);
+
+            backdrop-filter: blur(14px);
+
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .logo{
+
+            font-size: 28px;
+
+            font-weight: bold;
+
+            color: #00ffb3;
+        }
+
+        .nav-links{
+
+            display: flex;
+
+            gap: 35px;
+
+            list-style: none;
+        }
+
+        .nav-links a{
+
+            transition: 0.4s;
+        }
+
+        .nav-links a:hover{
+
+            color: #00ffb3;
+        }
+
+        /* ================= HERO ================= */
+
+        .review-hero{
+
+            width: 100%;
+            height: 90vh;
+
+            position: relative;
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            overflow: hidden;
+        }
+
+        .review-hero::before{
+
+            content: "";
+
+            position: absolute;
+
+            width: 100%;
+            height: 100%;
+
+            background:
+            linear-gradient(rgba(0,0,0,0.06),
+            rgba(0,0,0,0.08)),
+            url('https://images.unsplash.com/photo-1669937401447-7cfc6e9906e1?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzZ8fGdhbWVyfGVufDB8fDB8fHww');
+
+            background-size: cover;
+            background-position: center;
+
+            animation: zoomBg 12s infinite alternate;
+        }
+
+        .hero-content{
+
+            position: relative;
+
+            z-index: 10;
+
+            text-align: center;
+
+            padding: 50px;
+
+            border-radius: 30px;
+
+            background: rgba(255,255,255,0.06);
+
+            border: 1px solid rgba(255,255,255,0.08);
+
+            backdrop-filter: blur(14px);
+        }
+
+        .hero-content h1{
+
+            font-size: 70px;
+
+            margin-bottom: 20px;
+        }
+
+        .hero-content p{
+
+            color: #d7d7d7;
+
+            max-width: 700px;
+
+            line-height: 1.8;
+        }
+
+        /* ================= REVIEWS SECTION ================= */
+
+        .reviews-section{
+
+            width: 100%;
+
+            padding: 100px 8%;
+        }
+
+        .section-title{
+
+            text-align: center;
+
+            font-size: 45px;
+
+            margin-bottom: 60px;
+
+            color: #00ffb3;
+        }
+
+        /* GRID */
+
+        .reviews-grid{
+
+            display: grid;
+
+            grid-template-columns: repeat(3,1fr);
+
+            gap: 35px;
+        }
+
+        /* CARD */
+
+        .review-card{
+
+            border-radius: 28px;
+
+            overflow: hidden;
+
+            background: rgba(255,255,255,0.06);
+
+            border: 1px solid rgba(255,255,255,0.08);
+
+            backdrop-filter: blur(12px);
+
+            transition: 0.5s;
+        }
+
+        /* HOVER */
+
+        .review-card:hover{
+
+            transform: translateY(-10px);
+
+            box-shadow: 0 0 25px rgba(0,255,179,0.15);
+        }
+
+        /* IMAGE */
+
+        .review-image{
+
+            position: relative;
+
+            height: 280px;
+
+            overflow: hidden;
+        }
+
+        .review-image img{
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            transition: 0.6s;
+        }
+
+        .review-card:hover img{
+
+            transform: scale(1.1);
+        }
+
+        /* SCORE */
+
+        .score{
+
+            position: absolute;
+
+            top: 20px;
+            right: 20px;
+
+            width: 70px;
+            height: 70px;
+
+            border-radius: 50%;
+
+            background: #00ffb3;
+
+            color: black;
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            font-size: 22px;
+
+            font-weight: bold;
+
+            box-shadow: 0 0 20px rgba(0,255,179,0.4);
+        }
+
+        /* CONTENT */
+
+        .review-content{
+
+            padding: 30px;
+        }
+
+        .review-content span{
+
+            display: inline-block;
+
+            padding: 8px 18px;
+
+            border-radius: 30px;
+
+            background: rgba(0,255,179,0.12);
+
+            color: #00ffb3;
+
+            font-size: 13px;
+
+            margin-bottom: 20px;
+        }
+
+        .review-content h2{
+
+            font-size: 30px;
+
+            margin-bottom: 15px;
+        }
+
+        .review-content p{
+
+            color: #cfcfcf;
+
+            line-height: 1.8;
+
+            margin-bottom: 25px;
+        }
+
+        /* STARS */
+
+        .stars{
+
+            margin-bottom: 25px;
+
+            color: #00ffb3;
+        }
+
+        /* BUTTON */
+
+        .review-btn{
+
+            display: inline-block;
+
+            padding: 12px 24px;
+
+            border-radius: 40px;
+
+            background: #00ffb3;
+
+            color: black;
+
+            font-weight: bold;
+
+            transition: 0.4s;
+        }
+
+        .review-btn:hover{
+
+            transform: translateY(-4px);
+
+            box-shadow: 0 0 20px #00ffb3;
+        }
+
+        /* ================= TOP REVIEWERS ================= */
+
+.top-reviewers{
+
+    width: 100%;
+
+    padding: 100px 8%;
+
+    background: #0a0a0a;
+}
+
+/* GRID */
+
+.reviewers-container{
+
+    display: grid;
+
+    grid-template-columns: repeat(3,1fr);
+
+    gap: 35px;
+}
+
+/* CARD */
+
+.reviewer-card{
+
+    padding: 45px 35px;
+
+    text-align: center;
+
+    border-radius: 30px;
+
+    background: rgba(255,255,255,0.06);
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    backdrop-filter: blur(12px);
+
+    transition: 0.5s;
+}
+
+/* HOVER */
+
+.reviewer-card:hover{
+
+    transform: translateY(-10px);
+
+    box-shadow: 0 0 25px rgba(0,255,179,0.15);
+}
+
+/* IMAGE */
+
+.reviewer-image{
+
+    width: 140px;
+    height: 140px;
+
+    margin: auto;
+
+    border-radius: 50%;
+
+    overflow: hidden;
+
+    margin-bottom: 30px;
+
+    border: 3px solid rgba(0,255,179,0.3);
+}
+
+.reviewer-image img{
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: 0.5s;
+}
+
+.reviewer-card:hover img{
+
+    transform: scale(1.1);
+}
+
+/* NAME */
+
+.reviewer-card h2{
+
+    font-size: 30px;
+
+    margin-bottom: 12px;
+}
+
+/* ROLE */
+
+.reviewer-card span{
+
+    display: inline-block;
+
+    color: #00ffb3;
+
+    margin-bottom: 22px;
+
+    font-size: 14px;
+}
+
+/* TEXT */
+
+.reviewer-card p{
+
+    color: #cfcfcf;
+
+    line-height: 1.8;
+
+    margin-bottom: 30px;
+}
+
+/* ICONS */
+
+.reviewer-icons{
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 18px;
+}
+
+/* ICON */
+
+.reviewer-icons i{
+
+    width: 50px;
+    height: 50px;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,0.08);
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    color: #00ffb3;
+
+    font-size: 18px;
+
+    transition: 0.4s;
+
+    cursor: pointer;
+}
+
+/* HOVER */
+
+.reviewer-icons i:hover{
+
+    background: #00ffb3;
+
+    color: black;
+
+    transform: translateY(-5px);
+}
+
+        /* ================= FOOTER ================= */
+
+        footer{
+
+            padding: 30px;
+
+            text-align: center;
+
+            border-top: 1px solid rgba(255,255,255,0.08);
+
+            color: #8f8f8f;
+        }
+
+        /* ================= ANIMATION ================= */
+
+        @keyframes zoomBg{
+
+            0%{
+                transform: scale(1);
+            }
+
+            100%{
+                transform: scale(1.1);
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header>
+
+        <nav>
+
+            <div class="logo">
+                RandomGamer
+            </div>
+
+            <ul class="nav-links">
+
+                <li><a href="gaming-home.html">Home</a></li>
+
+                <li><a href="gamingnews.html">News</a></li>
+
+                <li><a href="gaming-review.html">Reviews</a></li>
+
+                <li><a href="gaming-trend.html">Trending</a></li>
+
+                <li><a href="gaming-contact.html">Contact</a></li>
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+    <!-- ================= HERO ================= -->
+
+    <section class="review-hero">
+
+        <div class="hero-content">
+
+            <h1>
+                Game Reviews
+            </h1>
+
+            <p>
+                Explore detailed reviews, ratings, gameplay analysis,
+                graphics performance and immersive gaming experiences.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- ================= REVIEWS ================= -->
+
+    <section class="reviews-section">
+
+        <h1 class="section-title">
+            Featured Reviews
+        </h1>
+
+        <div class="reviews-grid">
+
+            <!-- CARD 1 -->
+
+            <div class="review-card">
+
+                <div class="review-image">
+
+                    <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1200&auto=format&fit=crop"
+                        alt="review">
+
+                    <div class="score">
+                        9.5
+                    </div>
+
+                </div>
+
+                <div class="review-content">
+
+                    <span>
+                        Action RPG
+                    </span>
+
+                    <h2>
+                        Cyber Strike
+                    </h2>
+
+                    <div class="stars">
+
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+
+                    </div>
+
+                    <p>
+                        Stunning visuals, advanced AI combat systems,
+                        and immersive storytelling create a next-gen experience.
+                    </p>
+
+                    <a href="#" class="review-btn">
+                        Read Review
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- CARD 2 -->
+
+            <div class="review-card">
+
+                <div class="review-image">
+
+                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200&auto=format&fit=crop"
+                        alt="review">
+
+                    <div class="score">
+                        8.9
+                    </div>
+
+                </div>
+
+                <div class="review-content">
+
+                    <span>
+                        Racing
+                    </span>
+
+                    <h2>
+                        Nitro Racing
+                    </h2>
+
+                    <div class="stars">
+
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+
+                    </div>
+
+                    <p>
+                        Realistic physics, cinematic tracks,
+                        and fast-paced gameplay deliver intense racing action.
+                    </p>
+
+                    <a href="#" class="review-btn">
+                        Read Review
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- CARD 3 -->
+
+            <div class="review-card">
+
+                <div class="review-image">
+
+                    <img src="https://images.unsplash.com/photo-1511882150382-421056c89033?q=80&w=1200&auto=format&fit=crop"
+                        alt="review">
+
+                    <div class="score">
+                        9.2
+                    </div>
+
+                </div>
+
+                <div class="review-content">
+
+                    <span>
+                        Shooter
+                    </span>
+
+                    <h2>
+                        Battle Arena X
+                    </h2>
+
+                    <div class="stars">
+
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+
+                    </div>
+
+                    <p>
+                        Competitive multiplayer gameplay and polished combat
+                        mechanics make this a standout esports title.
+                    </p>
+
+                    <a href="#" class="review-btn">
+                        Read Review
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= TOP REVIEWERS SECTION ================= -->
+
+<section class="top-reviewers">
+
+    <h1 class="section-title">
+        Top Reviewers
+    </h1>
+
+    <div class="reviewers-container">
+
+        <!-- CARD 1 -->
+
+        <div class="reviewer-card">
+
+            <div class="reviewer-image">
+
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1200&auto=format&fit=crop"
+                    alt="reviewer">
+
+            </div>
+
+            <h2>
+                Alex Carter
+            </h2>
+
+            <span>
+                RPG & Open World Specialist
+            </span>
+
+            <p>
+                Covers immersive storytelling, combat mechanics,
+                world design and next generation RPG gameplay systems.
+            </p>
+
+            <div class="reviewer-icons">
+
+                <i class="fa-brands fa-instagram"></i>
+
+                <i class="fa-brands fa-x-twitter"></i>
+
+                <i class="fa-brands fa-youtube"></i>
+
+            </div>
+
+        </div>
+
+        <!-- CARD 2 -->
+
+        <div class="reviewer-card">
+
+            <div class="reviewer-image">
+
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200&auto=format&fit=crop"
+                    alt="reviewer">
+
+            </div>
+
+            <h2>
+                Sophia Miles
+            </h2>
+
+            <span>
+                Esports & FPS Reviewer
+            </span>
+
+            <p>
+                Reviews competitive shooters, esports tournaments,
+                multiplayer balance and ranked gameplay experiences.
+            </p>
+
+            <div class="reviewer-icons">
+
+                <i class="fa-brands fa-instagram"></i>
+
+                <i class="fa-brands fa-x-twitter"></i>
+
+                <i class="fa-brands fa-twitch"></i>
+
+            </div>
+
+        </div>
+
+        <!-- CARD 3 -->
+
+        <div class="reviewer-card">
+
+            <div class="reviewer-image">
+
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1200&auto=format&fit=crop"
+                    alt="reviewer">
+
+            </div>
+
+            <h2>
+                Daniel Brooks
+            </h2>
+
+            <span>
+                Racing & Simulation Reviewer
+            </span>
+
+            <p>
+                Focuses on realistic driving mechanics,
+                graphics quality and immersive racing experiences.
+            </p>
+
+            <div class="reviewer-icons">
+
+                <i class="fa-brands fa-instagram"></i>
+
+                <i class="fa-brands fa-x-twitter"></i>
+
+                <i class="fa-brands fa-discord"></i>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            © 2026 RandomGamer Gaming Blog | All Rights Reserved
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

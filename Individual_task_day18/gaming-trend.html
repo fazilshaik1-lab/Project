@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Trending Games</title>
+
+    <!-- FONT AWESOME -->
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background: #050505;
+            color: white;
+        }
+
+        a{
+            text-decoration: none;
+            color: white;
+        }
+
+        img{
+            width: 100%;
+            display: block;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        header{
+
+            width: 100%;
+
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            z-index: 1000;
+
+            padding: 20px 8%;
+        }
+
+        nav{
+
+            display: flex;
+
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 18px 35px;
+
+            border-radius: 20px;
+
+            background: rgba(255,255,255,0.08);
+
+            backdrop-filter: blur(14px);
+
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .logo{
+
+            font-size: 28px;
+
+            font-weight: bold;
+
+            color: #00ffb3;
+        }
+
+        .nav-links{
+
+            display: flex;
+
+            gap: 35px;
+
+            list-style: none;
+        }
+
+        .nav-links a{
+
+            transition: 0.4s;
+        }
+
+        .nav-links a:hover{
+
+            color: #00ffb3;
+        }
+
+        /* ================= HERO ================= */
+
+        .trending-hero{
+
+            width: 100%;
+            height: 90vh;
+
+            position: relative;
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            overflow: hidden;
+        }
+
+        .trending-hero::before{
+
+            content: "";
+
+            position: absolute;
+
+            width: 100%;
+            height: 100%;
+
+            background:
+            linear-gradient(rgba(0,0,0,0.06),
+            rgba(0,0,0,0.08)),
+            url('https://images.unsplash.com/photo-1598550476439-6847785fcea6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjh8fGdhbWVyfGVufDB8fDB8fHww');
+
+            background-size: cover;
+            background-position: center;
+
+            animation: zoomBg 12s infinite alternate;
+        }
+
+        .hero-content{
+
+            position: relative;
+
+            z-index: 10;
+
+            text-align: center;
+
+            padding: 50px;
+
+            border-radius: 30px;
+
+            background: rgba(255,255,255,0.06);
+
+            border: 1px solid rgba(255,255,255,0.08);
+
+            backdrop-filter: blur(14px);
+        }
+
+        .hero-content h1{
+
+            font-size: 70px;
+
+            margin-bottom: 20px;
+        }
+
+        .hero-content p{
+
+            max-width: 700px;
+
+            color: #d7d7d7;
+
+            line-height: 1.8;
+        }
+
+        /* ================= TRENDING SECTION ================= */
+
+        .trending-section{
+
+            width: 100%;
+
+            padding: 100px 8%;
+        }
+
+        .section-title{
+
+            text-align: center;
+
+            font-size: 45px;
+
+            color: #00ffb3;
+
+            margin-bottom: 60px;
+        }
+
+        /* MAIN GRID */
+
+        .trending-container{
+
+            display: grid;
+
+            grid-template-columns: 1.2fr 0.8fr;
+
+            gap: 35px;
+        }
+
+        /* ================= MAIN CARD ================= */
+
+        .main-card{
+
+            position: relative;
+
+            height: 700px;
+
+            overflow: hidden;
+
+            border-radius: 30px;
+        }
+
+        .main-card img{
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            transition: 0.7s;
+        }
+
+        .main-card:hover img{
+
+            transform: scale(1.08);
+        }
+
+        /* OVERLAY */
+
+        .main-overlay{
+
+            position: absolute;
+
+            left: 0;
+            top: 0;
+
+            width: 100%;
+            height: 100%;
+
+            background:
+            linear-gradient(to top,
+            rgba(0,0,0,0.92),
+            rgba(0,0,0,0.15));
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: flex-end;
+
+            padding: 50px;
+        }
+
+        .main-overlay span{
+
+            width: fit-content;
+
+            padding: 8px 20px;
+
+            border-radius: 30px;
+
+            background: rgba(0,255,179,0.15);
+
+            border: 1px solid rgba(0,255,179,0.3);
+
+            color: #00ffb3;
+
+            margin-bottom: 20px;
+        }
+
+        .main-overlay h2{
+
+            font-size: 70px;
+
+            margin-bottom: 20px;
+        }
+
+        .main-overlay p{
+
+            max-width: 600px;
+
+            color: #d7d7d7;
+
+            line-height: 1.8;
+
+            margin-bottom: 30px;
+        }
+
+        .main-overlay a{
+
+            width: fit-content;
+
+            padding: 14px 30px;
+
+            border-radius: 40px;
+
+            background: #00ffb3;
+
+            color: black;
+
+            font-weight: bold;
+
+            transition: 0.4s;
+        }
+
+        .main-overlay a:hover{
+
+            transform: translateY(-4px);
+
+            box-shadow: 0 0 20px #00ffb3;
+        }
+
+        /* ================= SIDE CARDS ================= */
+
+        .side-cards{
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 25px;
+        }
+
+        /* SMALL CARD */
+
+        .small-card{
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 20px;
+
+            padding: 20px;
+
+            border-radius: 24px;
+
+            background: rgba(255,255,255,0.06);
+
+            border: 1px solid rgba(255,255,255,0.08);
+
+            backdrop-filter: blur(12px);
+
+            transition: 0.4s;
+        }
+
+        .small-card:hover{
+
+            transform: translateX(8px);
+
+            box-shadow: 0 0 20px rgba(0,255,179,0.15);
+        }
+
+        /* IMAGE */
+
+        .small-image{
+
+            width: 160px;
+
+            height: 140px;
+
+            overflow: hidden;
+
+            border-radius: 20px;
+
+            flex-shrink: 0;
+        }
+
+        .small-image img{
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            transition: 0.5s;
+        }
+
+        .small-card:hover img{
+
+            transform: scale(1.1);
+        }
+
+        /* CONTENT */
+
+        .small-content span{
+
+            color: #00ffb3;
+
+            font-size: 14px;
+        }
+
+        .small-content h3{
+
+            font-size: 28px;
+
+            margin: 12px 0;
+        }
+
+        .small-content p{
+
+            color: #cfcfcf;
+
+            line-height: 1.7;
+
+            font-size: 14px;
+        }
+
+        /* ================= LIVE ESPORTS ================= */
+
+.live-esports{
+
+    width: 100%;
+
+    padding: 100px 8%;
+
+    background: #0a0a0a;
+}
+
+/* CONTAINER */
+
+.esports-container{
+
+    display: grid;
+
+    grid-template-columns: 1.2fr 0.8fr;
+
+    gap: 35px;
+}
+
+/* ================= MAIN CARD ================= */
+
+.main-esports-card{
+
+    position: relative;
+
+    height: 650px;
+
+    overflow: hidden;
+
+    border-radius: 35px;
+}
+
+/* IMAGE */
+
+.main-esports-card img{
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: 0.7s;
+}
+
+.main-esports-card:hover img{
+
+    transform: scale(1.08);
+}
+
+/* OVERLAY */
+
+.esports-overlay{
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background:
+    linear-gradient(to top,
+    rgba(0,0,0,0.92),
+    rgba(0,0,0,0.15));
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: flex-end;
+
+    padding: 50px;
+}
+
+/* TAG */
+
+.esports-overlay span{
+
+    width: fit-content;
+
+    padding: 8px 20px;
+
+    border-radius: 30px;
+
+    background: rgba(255,0,0,0.15);
+
+    border: 1px solid rgba(255,0,0,0.4);
+
+    color: #ff4d4d;
+
+    margin-bottom: 20px;
+
+    letter-spacing: 1px;
+}
+
+/* TITLE */
+
+.esports-overlay h2{
+
+    font-size: 60px;
+
+    line-height: 1.2;
+
+    margin-bottom: 20px;
+}
+
+/* TEXT */
+
+.esports-overlay p{
+
+    max-width: 600px;
+
+    color: #d7d7d7;
+
+    line-height: 1.8;
+
+    margin-bottom: 30px;
+}
+
+/* VIEWERS */
+
+.viewers{
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+.viewers i{
+
+    color: #00ffb3;
+
+    font-size: 20px;
+}
+
+.viewers p{
+
+    margin-bottom: 0;
+}
+
+/* ================= MATCH LIST ================= */
+
+.match-list{
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 25px;
+}
+
+/* MATCH CARD */
+
+.match-card{
+
+    padding: 35px;
+
+    border-radius: 28px;
+
+    background: rgba(255,255,255,0.06);
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    backdrop-filter: blur(12px);
+
+    transition: 0.4s;
+}
+
+/* HOVER */
+
+.match-card:hover{
+
+    transform: translateX(8px);
+
+    box-shadow: 0 0 20px rgba(0,255,179,0.15);
+}
+
+/* TEAMS */
+
+.team-info{
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 18px;
+}
+
+/* TEAM */
+
+.team-info h2{
+
+    font-size: 26px;
+}
+
+/* VS */
+
+.team-info span{
+
+    color: #00ffb3;
+
+    font-size: 18px;
+
+    font-weight: bold;
+}
+
+/* TIME */
+
+.match-card p{
+
+    color: #cfcfcf;
+
+    font-size: 15px;
+}
+
+        /* ================= FOOTER ================= */
+
+        footer{
+
+            padding: 30px;
+
+            text-align: center;
+
+            border-top: 1px solid rgba(255,255,255,0.08);
+
+            color: #8f8f8f;
+        }
+
+        /* ================= ANIMATION ================= */
+
+        @keyframes zoomBg{
+
+            0%{
+                transform: scale(1);
+            }
+
+            100%{
+                transform: scale(1.1);
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header>
+
+        <nav>
+
+            <div class="logo">
+                RandomGamer
+            </div>
+
+            <ul class="nav-links">
+
+                <li><a href="gaming-home.html">Home</a></li>
+
+                <li><a href="gamingnews.html">News</a></li>
+
+                <li><a href="gaming-review.html">Reviews</a></li>
+
+                <li><a href="gaming-trend.html">Trending</a></li>
+
+                <li><a href="gaming-contact.html">Contact</a></li>
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+    <!-- ================= HERO ================= -->
+
+    <section class="trending-hero">
+
+        <div class="hero-content">
+
+            <h1>
+                Trending Games
+            </h1>
+
+            <p>
+                Discover the most popular games dominating the gaming world,
+                esports tournaments and next generation gameplay experiences.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- ================= TRENDING SECTION ================= -->
+
+    <section class="trending-section">
+
+        <h1 class="section-title">
+            Top Trending Now
+        </h1>
+
+        <div class="trending-container">
+
+            <!-- MAIN CARD -->
+
+            <div class="main-card">
+
+                <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1600&auto=format&fit=crop"
+                    alt="trending">
+
+                <div class="main-overlay">
+
+                    <span>
+                        #1 Trending
+                    </span>
+
+                    <h2>
+                        GTA VI
+                    </h2>
+
+                    <p>
+                        Rockstar officially reveals cinematic visuals,
+                        dynamic gameplay systems and next generation open world mechanics.
+                    </p>
+
+                    <a href="#">
+                        Explore More
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- SIDE CARDS -->
+
+            <div class="side-cards">
+
+                <!-- CARD 1 -->
+
+                <div class="small-card">
+
+                    <div class="small-image">
+
+                        <img src="https://images.unsplash.com/photo-1511882150382-421056c89033?q=80&w=1200&auto=format&fit=crop"
+                            alt="game">
+
+                    </div>
+
+                    <div class="small-content">
+
+                        <span>
+                            #02
+                        </span>
+
+                        <h3>
+                            Battle Arena X
+                        </h3>
+
+                        <p>
+                            Competitive shooter currently dominating esports rankings.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <!-- CARD 2 -->
+
+                <div class="small-card">
+
+                    <div class="small-image">
+
+                        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200&auto=format&fit=crop"
+                            alt="game">
+
+                    </div>
+
+                    <div class="small-content">
+
+                        <span>
+                            #03
+                        </span>
+
+                        <h3>
+                            Nitro Racing
+                        </h3>
+
+                        <p>
+                            Hyper realistic racing gameplay with cinematic environments.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <!-- CARD 3 -->
+
+                <div class="small-card">
+
+                    <div class="small-image">
+
+                        <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1200&auto=format&fit=crop"
+                            alt="game">
+
+                    </div>
+
+                    <div class="small-content">
+
+                        <span>
+                            #04
+                        </span>
+
+                        <h3>
+                            Cyber Strike
+                        </h3>
+
+                        <p>
+                            Massive futuristic RPG with advanced combat mechanics.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= LIVE ESPORTS SECTION ================= -->
+
+<section class="live-esports">
+
+    <h1 class="section-title">
+        Live Esports Events
+    </h1>
+
+    <div class="esports-container">
+
+        <!-- LEFT SIDE -->
+
+        <div class="main-esports-card">
+
+            <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1600&auto=format&fit=crop"
+                alt="esports">
+
+            <div class="esports-overlay">
+
+                <span>
+                    LIVE NOW
+                </span>
+
+                <h2>
+                    Global Arena Championship
+                </h2>
+
+                <p>
+                    Top international teams compete in one of the biggest
+                    esports tournaments featuring intense multiplayer action.
+                </p>
+
+                <div class="viewers">
+
+                    <i class="fa-solid fa-eye"></i>
+
+                    <p>
+                        245K Watching
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT SIDE -->
+
+        <div class="match-list">
+
+            <!-- MATCH 1 -->
+
+            <div class="match-card">
+
+                <div class="team-info">
+
+                    <h2>
+                        Team Nova
+                    </h2>
+
+                    <span>
+                        VS
+                    </span>
+
+                    <h2>
+                        Shadow Core
+                    </h2>
+
+                </div>
+
+                <p>
+                    Semi Final • 7:30 PM
+                </p>
+
+            </div>
+
+            <!-- MATCH 2 -->
+
+            <div class="match-card">
+
+                <div class="team-info">
+
+                    <h2>
+                        Cyber Titans
+                    </h2>
+
+                    <span>
+                        VS
+                    </span>
+
+                    <h2>
+                        Alpha Strike
+                    </h2>
+
+                </div>
+
+                <p>
+                    Quarter Final • 9:00 PM
+                </p>
+
+            </div>
+
+            <!-- MATCH 3 -->
+
+            <div class="match-card">
+
+                <div class="team-info">
+
+                    <h2>
+                        Venom Squad
+                    </h2>
+
+                    <span>
+                        VS
+                    </span>
+
+                    <h2>
+                        Omega Force
+                    </h2>
+
+                </div>
+
+                <p>
+                    Grand Final • Tomorrow
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            © 2026 RandomGamer Gaming Blog | All Rights Reserved
+        </p>
+
+    </footer>
+
+</body>
+
+</html>
