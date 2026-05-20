@@ -1,0 +1,1446 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>About | The Hungry Critic</title>
+
+<!-- GOOGLE FONTS -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500;600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!-- FONT AWESOME -->
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+/* =================================================
+   RESET
+================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:'Outfit',sans-serif;
+
+    background:#fdfaf3;
+
+    color:#18150f;
+
+    overflow-x:hidden;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+/* =================================================
+   VARIABLES
+================================================= */
+
+:root{
+
+    --primary:#c8701a;
+
+    --gold:#e8a83a;
+
+    --text:#18150f;
+
+    --muted:#8a8178;
+
+    --border:#e2d9c8;
+}
+
+/* =================================================
+   ANIMATIONS
+================================================= */
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes floatCard{
+
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-10px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
+}
+
+/* =================================================
+   NAVBAR
+================================================= */
+
+.nav{
+
+    position:sticky;
+    top:0;
+
+    width:100%;
+
+    background:#fdfaf3;
+
+    border-bottom:1px solid var(--border);
+
+    z-index:1000;
+}
+
+.nav__inner{
+
+    width:90%;
+    max-width:1300px;
+
+    margin:auto;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:1.2rem 0;
+}
+
+.nav__logo{
+
+    display:flex;
+    align-items:center;
+
+    gap:0.5rem;
+
+    font-family:'Cormorant',serif;
+
+    font-size:1.8rem;
+
+    font-weight:600;
+}
+
+.nav__logo-star{
+    color:var(--primary);
+}
+
+.nav__links{
+
+    list-style:none;
+
+    display:flex;
+
+    gap:2rem;
+}
+
+.nav__links a{
+
+    position:relative;
+
+    font-size:0.82rem;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+
+    color:var(--muted);
+
+    transition:0.3s;
+}
+
+.nav__links a:hover,
+.nav__links .active{
+
+    color:var(--primary);
+}
+
+.nav__links a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    bottom:-8px;
+
+    width:0%;
+
+    height:2px;
+
+    background:var(--primary);
+
+    transition:0.4s;
+}
+
+.nav__links a:hover::after,
+.nav__links .active::after{
+
+    width:100%;
+}
+
+.nav__cta{
+
+    display:flex;
+
+    gap:1rem;
+}
+
+/* =================================================
+   BUTTONS
+================================================= */
+
+.btn{
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:0.8rem 1.5rem;
+
+    border-radius:40px;
+
+    font-size:0.78rem;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+
+    transition:0.3s;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+}
+
+.btn--ghost{
+
+    border:1px solid var(--border);
+
+    color:var(--muted);
+}
+
+.btn--ghost:hover{
+
+    border-color:var(--text);
+
+    color:var(--text);
+}
+
+.btn--primary{
+
+    background:var(--primary);
+
+    color:white;
+}
+
+.btn--primary:hover{
+
+    background:#a85b12;
+}
+
+/* =================================================
+   HERO
+================================================= */
+
+.hero{
+
+    width:90%;
+    max-width:1300px;
+
+    margin:auto;
+
+    padding:8rem 0;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:5rem;
+
+    align-items:center;
+}
+
+.hero-left{
+
+    animation:fadeUp 1s ease forwards;
+}
+
+.hero-tag{
+
+    color:var(--primary);
+
+    text-transform:uppercase;
+
+    letter-spacing:3px;
+
+    font-size:0.75rem;
+
+    margin-bottom:1.5rem;
+}
+
+.hero-title{
+
+    font-family:'Cormorant',serif;
+
+    font-size:5rem;
+
+    line-height:1.05;
+
+    margin-bottom:1.5rem;
+}
+
+.hero-title span{
+
+    color:var(--primary);
+
+    font-style:italic;
+}
+
+.hero-text{
+
+    color:var(--muted);
+
+    line-height:1.9;
+
+    max-width:550px;
+
+    margin-bottom:2rem;
+}
+
+/* HERO CARD */
+
+.hero-card{
+
+    background:white;
+
+    border:1px solid var(--border);
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+    box-shadow:0 20px 50px rgba(0,0,0,0.08);
+
+    animation:
+    fadeUp 1s ease 0.3s forwards,
+    floatCard 4s ease-in-out infinite;
+
+    opacity:0;
+}
+
+.hero-image{
+
+    height:350px;
+
+    background:linear-gradient(
+    135deg,
+    #2a1409,
+    #7a3712,
+    #b06030
+    );
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.hero-image span{
+
+    font-size:8rem;
+
+    opacity:0.2;
+}
+
+.hero-body{
+
+    padding:2rem;
+}
+
+.hero-body h3{
+
+    font-family:'Cormorant',serif;
+
+    font-size:2rem;
+
+    margin-bottom:1rem;
+}
+
+.hero-body p{
+
+    color:var(--muted);
+
+    line-height:1.8;
+}
+
+/* =================================================
+   SECTION
+================================================= */
+
+.section{
+
+    width:90%;
+    max-width:1300px;
+
+    margin:auto;
+
+    padding-bottom:7rem;
+}
+
+.section-tag{
+
+    color:var(--primary);
+
+    text-transform:uppercase;
+
+    letter-spacing:3px;
+
+    font-size:0.75rem;
+
+    margin-bottom:1rem;
+}
+
+.section-title{
+
+    font-family:'Cormorant',serif;
+
+    font-size:3.5rem;
+
+    margin-bottom:3rem;
+}
+
+.section-title span{
+
+    color:var(--primary);
+
+    font-style:italic;
+}
+
+/* =================================================
+   STORY SECTION
+================================================= */
+
+.story-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:4rem;
+
+    align-items:center;
+}
+
+.story-image{
+
+    min-height:500px;
+
+    border-radius:30px;
+
+    background:linear-gradient(
+    135deg,
+    #1d120a,
+    #7c3c16,
+    #c8701a
+    );
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.story-image span{
+
+    font-size:10rem;
+
+    opacity:0.15;
+}
+
+.story-content p{
+
+    color:var(--muted);
+
+    line-height:2;
+
+    margin-bottom:1.5rem;
+}
+
+/* =================================================
+   VALUES
+================================================= */
+
+.values-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:2rem;
+}
+
+.value-card{
+
+    background:white;
+
+    border:1px solid var(--border);
+
+    border-radius:24px;
+
+    padding:2.5rem;
+
+    transition:0.4s;
+}
+
+.value-card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 20px 40px rgba(0,0,0,0.08);
+}
+
+.value-icon{
+
+    width:70px;
+    height:70px;
+
+    border-radius:50%;
+
+    background:#f7efe5;
+
+    color:var(--primary);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:1.5rem;
+
+    margin-bottom:2rem;
+}
+
+.value-card h3{
+
+    font-family:'Cormorant',serif;
+
+    font-size:2rem;
+
+    margin-bottom:1rem;
+}
+
+.value-card p{
+
+    color:var(--muted);
+
+    line-height:1.9;
+}
+
+/* =================================================
+   STATS STRIP
+================================================= */
+
+.stats-strip{
+
+    width:90%;
+    max-width:1300px;
+
+    margin:0 auto 7rem;
+
+    background:#18150f;
+
+    border-radius:30px;
+
+    padding:5rem;
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    text-align:center;
+}
+
+.stat h2{
+
+    font-family:'Cormorant',serif;
+
+    font-size:4rem;
+
+    color:var(--gold);
+
+    margin-bottom:0.5rem;
+}
+
+.stat p{
+
+    color:rgba(255,255,255,0.65);
+}
+
+/* =================================================
+   TEAM SECTION
+================================================= */
+
+.team-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:2rem;
+}
+
+.team-card{
+
+    background:white;
+
+    border:1px solid var(--border);
+
+    border-radius:24px;
+
+    overflow:hidden;
+
+    transition:0.4s;
+}
+
+.team-card:hover{
+
+    transform:translateY(-10px);
+}
+
+.team-image{
+
+    height:280px;
+
+    background:linear-gradient(
+    135deg,
+    #2a1409,
+    #6e3413,
+    #b06030
+    );
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.team-image span{
+
+    font-size:6rem;
+
+    opacity:0.2;
+}
+
+.team-body{
+
+    padding:2rem;
+}
+
+.team-role{
+
+    color:var(--primary);
+
+    text-transform:uppercase;
+
+    letter-spacing:2px;
+
+    font-size:0.72rem;
+
+    margin-bottom:0.7rem;
+}
+
+.team-body h3{
+
+    font-family:'Cormorant',serif;
+
+    font-size:2rem;
+
+    margin-bottom:1rem;
+}
+
+.team-body p{
+
+    color:var(--muted);
+
+    line-height:1.8;
+}
+
+/* =================================================
+   QUOTE STRIP
+================================================= */
+
+.quote-strip{
+
+    width:90%;
+    max-width:1300px;
+
+    margin:0 auto 7rem;
+
+    text-align:center;
+}
+
+.quote-strip h2{
+
+    font-family:'Cormorant',serif;
+
+    font-size:4rem;
+
+    line-height:1.3;
+
+    max-width:900px;
+
+    margin:auto;
+}
+
+.quote-strip span{
+
+    color:var(--primary);
+
+    font-style:italic;
+}
+
+/* =================================================
+   FOOTER SECTION
+================================================= */
+
+.footer{
+
+    background:#12100d;
+
+    padding-top:6rem;
+
+    margin-top:5rem;
+}
+
+
+/* ================= CONTAINER ================= */
+
+.footer-container{
+
+    width:90%;
+    max-width:1300px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:2fr 1fr 1fr 1fr;
+
+    gap:4rem;
+
+    padding-bottom:4rem;
+
+    border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+
+/* ================= ABOUT ================= */
+
+.footer-logo{
+
+    display:flex;
+    align-items:center;
+
+    gap:0.5rem;
+
+    font-family:'Cormorant',serif;
+
+    font-size:2rem;
+
+    color:white;
+
+    margin-bottom:1.5rem;
+}
+
+.footer-star{
+    color:var(--gold);
+}
+
+.footer-text{
+
+    color:rgba(255,255,255,0.55);
+
+    line-height:1.9;
+
+    max-width:350px;
+
+    margin-bottom:2rem;
+}
+
+
+/* ================= SOCIALS ================= */
+
+.footer-socials{
+
+    display:flex;
+
+    gap:1rem;
+}
+
+.footer-socials a{
+
+    width:45px;
+    height:45px;
+
+    border-radius:50%;
+
+    background:#1f1b16;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:white;
+
+    transition:0.3s;
+}
+
+.footer-socials a:hover{
+
+    background:var(--primary);
+
+    transform:translateY(-5px);
+}
+
+
+/* ================= LINKS ================= */
+
+.footer-links{
+
+    display:flex;
+    flex-direction:column;
+
+    gap:1rem;
+}
+
+.footer-links h3{
+
+    color:white;
+
+    font-size:1.1rem;
+
+    margin-bottom:1rem;
+
+    font-family:'Cormorant',serif;
+}
+
+.footer-links a{
+
+    color:rgba(255,255,255,0.55);
+
+    transition:0.3s;
+}
+
+.footer-links a:hover{
+
+    color:var(--gold);
+
+    transform:translateX(5px);
+}
+
+
+/* ================= BOTTOM ================= */
+
+.footer-bottom{
+
+    width:90%;
+    max-width:1300px;
+
+    margin:auto;
+
+    padding:1.5rem 0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.footer-bottom p{
+
+    color:rgba(255,255,255,0.45);
+
+    font-size:0.9rem;
+}
+
+/* From Uiverse.io by Shoh2008 */ 
+.loader {
+  position: relative;
+  height: 200px;
+  width: 200px;
+  border-bottom: 3px solid #c8701a;
+  box-sizing: border-box;
+  animation: drawLine 4s linear infinite;
+}
+
+.loader:before {
+  content: "";
+  position: absolute;
+  left: calc(100% + 14px);
+  bottom: -6px;
+  width: 16px;
+  height: 100px;
+  border-radius: 20px 20px 50px 50px;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(#ff3d00 6px, transparent 0),
+    linear-gradient(45deg, rgba(0, 0, 0, 0.02) 49%, white 51%),
+    linear-gradient(315deg, rgba(0, 0, 0, 0.02) 49%, white 51%),
+    linear-gradient( to bottom, #ffffff 10%, #e8a83a 10%, #e8a83a 90%, #ffffff 90% );
+  background-size: 3px 3px, 8px 8px, 8px 8px, 16px 88px;
+  background-position: center bottom, left 88px, right 88px, left top;
+  transform: rotate(25deg);
+  animation: pencilRot 4s linear infinite;
+}
+
+@keyframes drawLine {
+  0%, 100% {
+    width: 0px
+  }
+
+  45%, 55% {
+    width: 200px
+  }
+}
+
+@keyframes pencilRot {
+  0%, 45% {
+    bottom: -6px;
+    left: calc(100% + 14px);
+    transform: rotate(25deg);
+  }
+
+  55%,
+  100% {
+    bottom: -12px;
+    left: calc(100% + 16px);
+    transform: rotate(220deg);
+  }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="nav">
+
+<div class="nav__inner">
+
+<a href="#" class="nav__logo">
+
+<span class="nav__logo-star">
+★
+</span>
+
+The Hungry Critic
+
+</a>
+
+<ul class="nav__links">
+
+<li><a href="foodcritic.html">Reviews</a></li>
+<li><a href="hyd city.html">Hyd-City</a></li>
+<li><a href="cuisines.html">Cuisines</a></li>
+<li><a href="bestlist.html">Best Lists</a></li>
+<li><a href="#" class="active">About</a></li>
+
+</ul>
+
+<div class="nav__cta">
+
+<a href="#" class="btn btn--ghost">
+Subscribe
+</a>
+
+<a href="#" class="btn btn--primary">
+Write a Review
+</a>
+
+</div>
+
+</div>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-left">
+    
+
+<p class="hero-tag">
+Independent Food  Journalism
+</p>
+<!-- From Uiverse.io by Shoh2008 --> 
+<div class="loader"></div>
+
+<h1 class="hero-title">
+
+Stories behind every
+<span>great meal.</span>
+
+</h1>
+
+<p class="hero-text">
+
+The Hungry Critic explores India's evolving
+food culture through honest reviews,
+editorial storytelling and carefully curated
+restaurant discoveries.
+
+</p>
+
+<a href="#" class="btn btn--primary">
+Explore Reviews
+</a>
+
+</div>
+
+<div class="hero-card">
+
+<div class="hero-image">
+
+<span>🍽️</span>
+
+</div>
+
+<div class="hero-body">
+
+<h3>
+A publication built
+for food lovers.
+</h3>
+
+<p>
+
+We believe food criticism should be thoughtful,
+honest and deeply connected to culture.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- STORY -->
+
+<section class="section">
+
+<p class="section-tag">
+Our Story
+</p>
+
+<h2 class="section-title">
+
+Why We Started <span>The Hungry Critic</span>
+
+</h2>
+
+<div class="story-grid">
+
+<div class="story-image">
+
+<span>📖</span>
+
+</div>
+
+<div class="story-content">
+
+<p>
+
+The Hungry Critic began as a passion project
+focused on documenting unforgettable food experiences
+across Indian cities.
+
+</p>
+
+<p>
+
+Instead of paid rankings or promotional lists,
+we wanted to build a publication rooted in genuine
+editorial taste and independent criticism.
+
+</p>
+
+<p>
+
+Today, we continue to explore restaurants,
+cafés, chefs and street food cultures through
+thoughtful storytelling and immersive design.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- VALUES -->
+
+<section class="section">
+
+<p class="section-tag">
+Editorial Principles
+</p>
+
+<h2 class="section-title">
+
+What We <span>Stand For</span>
+
+</h2>
+
+<div class="values-grid">
+
+<div class="value-card">
+
+<div class="value-icon">
+<i class="fa-solid fa-star"></i>
+</div>
+
+<h3>Honest Reviews</h3>
+
+<p>
+
+Every restaurant is reviewed independently
+without paid influence or sponsored rankings.
+
+</p>
+
+</div>
+
+<div class="value-card">
+
+<div class="value-icon">
+<i class="fa-solid fa-utensils"></i>
+</div>
+
+<h3>Food Culture</h3>
+
+<p>
+
+We document the people, traditions and stories
+behind every memorable dish.
+
+</p>
+
+</div>
+
+<div class="value-card">
+
+<div class="value-icon">
+<i class="fa-solid fa-camera"></i>
+</div>
+
+<h3>Editorial Design</h3>
+
+<p>
+
+Our platform blends modern visual storytelling
+with thoughtful food journalism.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- STATS -->
+
+<section class="stats-strip">
+
+<div class="stat">
+
+<h2>1200+</h2>
+
+<p>Published Reviews</p>
+
+</div>
+
+<div class="stat">
+
+<h2>45</h2>
+
+<p>Cities Explored</p>
+
+</div>
+
+<div class="stat">
+
+<h2>320+</h2>
+
+<p>Restaurants Featured</p>
+
+</div>
+
+<div class="stat">
+
+<h2>4.8</h2>
+
+<p>Reader Rating</p>
+
+</div>
+
+</section>
+
+<!-- TEAM -->
+
+<section class="section">
+
+<p class="section-tag">
+Meet The Critics
+</p>
+
+<h2 class="section-title">
+
+The People Behind
+<span>The Reviews</span>
+
+</h2>
+
+<div class="team-grid">
+
+<div class="team-card">
+
+<div class="team-image">
+
+<span>👨‍🍳</span>
+
+</div>
+
+<div class="team-body">
+
+<p class="team-role">
+Founder & Critic
+</p>
+
+<h3>Rahman Ali</h3>
+
+<p>
+
+Focused on Hyderabadi cuisine,
+street food culture and regional storytelling.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="team-card">
+
+<div class="team-image">
+
+<span>☕</span>
+
+</div>
+
+<div class="team-body">
+
+<p class="team-role">
+Coffee Editor
+</p>
+
+<h3>Ananya Rao</h3>
+
+<p>
+
+Exploring India's growing café culture,
+specialty coffee and dessert spaces.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="team-card">
+
+<div class="team-image">
+
+<span>🍜</span>
+
+</div>
+
+<div class="team-body">
+
+<p class="team-role">
+Travel Writer
+</p>
+
+<h3>Karan Mehta</h3>
+
+<p>
+
+Documenting food trails,
+city guides and hidden restaurant gems.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- QUOTE -->
+
+<section class="quote-strip">
+
+<h2>
+
+“Great food is never just about taste —
+it is about <span>memory, culture and people.</span>”
+
+</h2>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+  <div class="footer-container">
+
+
+    <!-- LEFT -->
+
+    <div class="footer-about">
+
+      <a href="#" class="footer-logo">
+
+        <span class="footer-star">
+          <i class="fa-solid fa-star"></i>
+        </span>
+
+        The Hungry Critic
+
+      </a>
+
+      <p class="footer-text">
+
+        Honest restaurant reviews,
+        curated food guides and
+        unforgettable dining discoveries
+        across India.
+
+      </p>
+
+
+      <!-- SOCIAL ICONS -->
+
+      <div class="footer-socials">
+
+        <a href="#">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+
+        <a href="#">
+          <i class="fa-brands fa-x-twitter"></i>
+        </a>
+
+        <a href="#">
+          <i class="fa-brands fa-youtube"></i>
+        </a>
+
+        <a href="#">
+          <i class="fa-brands fa-facebook-f"></i>
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <!-- LINKS -->
+
+    <div class="footer-links">
+
+      <h3>Explore</h3>
+
+      <a href="#">Reviews</a>
+      <a href="#">Cities</a>
+      <a href="#">Cuisines</a>
+      <a href="#">Best Lists</a>
+      <a href="#">Newsletter</a>
+
+    </div>
+
+
+    <!-- COMPANY -->
+
+    <div class="footer-links">
+
+      <h3>Company</h3>
+
+      <a href="#">About Us</a>
+      <a href="#">Contact</a>
+      <a href="#">Careers</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms & Conditions</a>
+
+    </div>
+
+
+    <!-- CONTACT -->
+
+    <div class="footer-links">
+
+      <h3>Contact</h3>
+
+      <a href="#">hello@hungrycritic.com</a>
+      <a href="#">+91 98765 43210</a>
+      <a href="#">Hyderabad, India</a>
+
+    </div>
+
+  </div>
+
+
+  <!-- BOTTOM -->
+
+  <div class="footer-bottom">
+
+    <p>
+      © 2026 The Hungry Critic. All Rights Reserved.
+    </p>
+
+  </div>
+
+</footer>
+
+</body>
+
+</html>

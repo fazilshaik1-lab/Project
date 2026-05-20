@@ -1,0 +1,1888 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Hyderabad | The Hungry Critic</title>
+
+<!-- GOOGLE FONTS -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500;600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!-- FONT AWESOME -->
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+/* =================================================
+   RESET
+================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Outfit',sans-serif;
+    background:#fdfaf3;
+    color:#18150f;
+    overflow-x:hidden;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+img{
+    width:100%;
+    display:block;
+}
+
+/* =================================================
+   VARIABLES
+================================================= */
+
+:root{
+
+    --primary:#c8701a;
+    --gold:#e8a83a;
+    --text:#18150f;
+    --muted:#8a8178;
+    --border:#e2d9c8;
+}
+
+/* =================================================
+   ANIMATIONS
+================================================= */
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(50px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes floatCard{
+
+    0%{
+        transform:translateY(0px);
+    }
+
+    50%{
+        transform:translateY(-12px);
+    }
+
+    100%{
+        transform:translateY(0px);
+    }
+}
+
+/* =================================================
+   NAVBAR
+================================================= */
+
+.nav{
+
+    position:sticky;
+    top:0;
+
+    width:100%;
+
+    background:#fdfaf3;
+
+    border-bottom:1px solid var(--border);
+
+    z-index:1000;
+}
+
+.nav__inner{
+
+    width:90%;
+    max-width:1300px;
+
+    margin:auto;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:1.2rem 0;
+}
+
+/* LOGO */
+
+.nav__logo{
+
+    display:flex;
+    align-items:center;
+
+    gap:0.5rem;
+
+    font-family:'Cormorant',serif;
+
+    font-size:1.8rem;
+
+    font-weight:600;
+}
+
+.nav__logo-star{
+    color:var(--primary);
+}
+
+/* NAV LINKS */
+
+.nav__links{
+
+    list-style:none;
+
+    display:flex;
+
+    gap:2rem;
+}
+
+.nav__links a{
+
+    position:relative;
+
+    font-size:0.82rem;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+
+    color:var(--muted);
+
+    transition:0.3s;
+}
+
+.nav__links a:hover,
+.nav__links .active{
+
+    color:var(--primary);
+}
+
+.nav__links a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    bottom:-8px;
+
+    width:0%;
+
+    height:2px;
+
+    background:var(--primary);
+
+    transition:0.4s;
+}
+
+.nav__links a:hover::after,
+.nav__links .active::after{
+
+    width:100%;
+}
+
+/* CTA */
+
+.nav__cta{
+
+    display:flex;
+
+    gap:1rem;
+}
+
+/* =================================================
+   BUTTONS
+================================================= */
+
+.btn{
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:0.8rem 1.5rem;
+
+    border-radius:40px;
+
+    font-size:0.78rem;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+
+    transition:0.3s;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+}
+
+.btn--ghost{
+
+    border:1px solid var(--border);
+
+    color:var(--muted);
+}
+
+.btn--ghost:hover{
+
+    border-color:var(--text);
+
+    color:var(--text);
+}
+
+.btn--primary{
+
+    background:var(--primary);
+
+    color:white;
+}
+
+.btn--primary:hover{
+
+    background:#a85b12;
+}
+
+/* =================================================
+   HERO
+================================================= */
+
+.hero{
+
+    width:90%;
+    max-width:1300px;
+
+    margin:auto;
+
+    min-height:100vh;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    align-items:center;
+
+    gap:6rem;
+
+    padding:5rem 0;
+}
+
+/* LEFT */
+
+.hero-left{
+
+    animation:fadeUp 1s ease forwards;
+}
+
+.hero-tag{
+
+    color:var(--primary);
+
+    text-transform:uppercase;
+
+    letter-spacing:3px;
+
+    font-size:0.75rem;
+
+    margin-bottom:1.5rem;
+}
+
+.hero-title{
+
+    font-family:'Cormorant',serif;
+
+    font-size:5rem;
+
+    line-height:1.05;
+
+    font-weight:500;
+
+    margin-bottom:1.5rem;
+}
+
+.hero-title span{
+
+    color:var(--primary);
+
+    font-style:italic;
+}
+
+.hero-description{
+
+    max-width:550px;
+
+    color:var(--muted);
+
+    line-height:1.9;
+
+    margin-bottom:2rem;
+
+    font-size:1rem;
+}
+
+/* BUTTONS */
+
+.hero-buttons{
+
+    display:flex;
+
+    gap:1rem;
+
+    margin-bottom:3rem;
+}
+
+/* STATS */
+
+.hero-stats{
+
+    display:flex;
+
+    gap:3rem;
+
+    border-top:1px solid var(--border);
+
+    padding-top:2rem;
+}
+
+.stat-box h2{
+
+    font-family:'Cormorant',serif;
+
+    font-size:2.5rem;
+}
+
+.stat-box p{
+
+    color:var(--muted);
+
+    font-size:0.8rem;
+
+    margin-top:0.3rem;
+}
+
+/* =================================================
+   HERO RIGHT
+================================================= */
+
+.hero-right{
+
+    position:relative;
+
+    height:650px;
+}
+
+/* MAIN CARD */
+
+.main-card{
+
+    width:370px;
+
+    position:absolute;
+
+    right:-30px;
+    top:0;
+
+    background:white;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    border:1px solid var(--border);
+
+    box-shadow:0 20px 50px rgba(0,0,0,0.08);
+
+    animation:fadeUp 1s ease 0.3s forwards;
+
+    opacity:0;
+}
+
+.main-card:hover{
+
+    transform:translateY(-10px);
+
+    transition:0.4s;
+}
+
+.main-card-image{
+
+    height:280px;
+
+    background:linear-gradient(
+    135deg,
+    #3b2510,
+    #7a4520,
+    #b06030
+    );
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    position:relative;
+}
+
+.main-card-image span{
+
+    font-size:7rem;
+
+    opacity:0.25;
+}
+
+.badge{
+
+    position:absolute;
+
+    top:1rem;
+    left:1rem;
+
+    background:var(--primary);
+
+    color:white;
+
+    padding:0.4rem 0.9rem;
+
+    font-size:0.7rem;
+
+    border-radius:4px;
+
+    text-transform:uppercase;
+}
+
+.main-card-body{
+
+    padding:1.8rem;
+}
+
+.card-location{
+
+    color:var(--primary);
+
+    font-size:0.72rem;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+    margin-bottom:0.5rem;
+}
+
+.main-card-body h3{
+
+    font-family:'Cormorant',serif;
+
+    font-size:2rem;
+
+    margin-bottom:1rem;
+}
+
+.stars{
+
+    display:flex;
+
+    gap:0.2rem;
+
+    color:var(--gold);
+
+    margin-bottom:1rem;
+}
+
+.faded{
+    color:#d7d1c8;
+}
+
+.card-text{
+
+    color:var(--muted);
+
+    line-height:1.8;
+}
+
+/* From Uiverse.io  */ 
+.🤚 {
+  --skin-color: #c8701a;
+  --tap-speed: 0.6s;
+  --tap-stagger: 0.1s;
+  position: relative;
+  width: 80px;
+  height: 60px;
+  margin-left: 80px;
+}
+
+.🤚:before {
+  content: '';
+  display: block;
+  width: 180%;
+  height: 75%;
+  position: absolute;
+  top: 70%;
+  right: 20%;
+  background-color: black;
+  border-radius: 40px 10px;
+  filter: blur(10px);
+  opacity: 0.3;
+}
+
+.🌴 {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--skin-color);
+  border-radius: 10px 40px;
+}
+
+.👍 {
+  position: absolute;
+  width: 120%;
+  height: 38px;
+  background-color: var(--skin-color);
+  bottom: -18%;
+  right: 1%;
+  transform-origin: calc(100% - 20px) 20px;
+  transform: rotate(-20deg);
+  border-radius: 30px 20px 20px 10px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  border-left: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.👍:after {
+  width: 20%;
+  height: 60%;
+  content: '';
+  background-color: rgba(255, 255, 255, 0.3);
+  position: absolute;
+  bottom: -8%;
+  left: 5px;
+  border-radius: 60% 10% 10% 30%;
+  border-right: 2px solid rgba(0, 0, 0, 0.05);
+}
+
+.👉 {
+  position: absolute;
+  width: 80%;
+  height: 35px;
+  background-color: var(--skin-color);
+  bottom: 32%;
+  right: 64%;
+  transform-origin: 100% 20px;
+  animation-duration: calc(var(--tap-speed) * 2);
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  transform: rotate(10deg);
+}
+
+.👉:before {
+  content: '';
+  position: absolute;
+  width: 140%;
+  height: 30px;
+  background-color: var(--skin-color);
+  bottom: 8%;
+  right: 65%;
+  transform-origin: calc(100% - 20px) 20px;
+  transform: rotate(-60deg);
+  border-radius: 20px;
+}
+
+.👉:nth-child(1) {
+  animation-delay: 0;
+  filter: brightness(70%);
+  animation-name: tap-upper-1;
+}
+
+.👉:nth-child(2) {
+  animation-delay: var(--tap-stagger);
+  filter: brightness(80%);
+  animation-name: tap-upper-2;
+}
+
+.👉:nth-child(3) {
+  animation-delay: calc(var(--tap-stagger) * 2);
+  filter: brightness(90%);
+  animation-name: tap-upper-3;
+}
+
+.👉:nth-child(4) {
+  animation-delay: calc(var(--tap-stagger) * 3);
+  filter: brightness(100%);
+  animation-name: tap-upper-4;
+}
+
+@keyframes tap-upper-1 {
+  0%, 50%, 100% {
+    transform: rotate(10deg) scale(0.4);
+  }
+
+  40% {
+    transform: rotate(50deg) scale(0.4);
+  }
+}
+
+@keyframes tap-upper-2 {
+  0%, 50%, 100% {
+    transform: rotate(10deg) scale(0.6);
+  }
+
+  40% {
+    transform: rotate(50deg) scale(0.6);
+  }
+}
+
+@keyframes tap-upper-3 {
+  0%, 50%, 100% {
+    transform: rotate(10deg) scale(0.8);
+  }
+
+  40% {
+    transform: rotate(50deg) scale(0.8);
+  }
+}
+
+@keyframes tap-upper-4 {
+  0%, 50%, 100% {
+    transform: rotate(10deg) scale(1);
+  }
+
+  40% {
+    transform: rotate(50deg) scale(1);
+  }
+}
+
+/* SCORE CARD */
+
+.score-card{
+
+    position:absolute;
+
+    left:-90px;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    width:240px;
+
+    background:white;
+
+    padding:1.5rem;
+
+    border-radius:18px;
+
+    box-shadow:0 20px 60px rgba(0,0,0,0.08);
+
+    animation:fadeUp 1s ease 0.5s forwards;
+
+    opacity:0;
+}
+
+.score-card h4{
+
+    color:var(--muted);
+
+    text-transform:uppercase;
+
+    letter-spacing:2px;
+
+    font-size:0.75rem;
+
+    margin-bottom:1rem;
+}
+
+.score-row{
+
+    display:flex;
+    align-items:center;
+
+    gap:0.6rem;
+
+    margin-bottom:0.8rem;
+}
+
+.score-row span{
+
+    width:65px;
+
+    font-size:0.75rem;
+
+    color:var(--muted);
+}
+
+.bar{
+
+    flex:1;
+
+    height:4px;
+
+    background:#ece4d7;
+
+    border-radius:10px;
+}
+
+.fill{
+
+    height:100%;
+
+    background:var(--primary);
+
+    border-radius:10px;
+}
+
+.fill1{width:95%;}
+.fill2{width:88%;}
+.fill3{width:82%;}
+.fill4{width:90%;}
+
+.score-row p{
+    font-size:0.75rem;
+}
+
+.total-score{
+
+    border-top:1px solid var(--border);
+
+    margin-top:1rem;
+
+    padding-top:1rem;
+
+    display:flex;
+    align-items:end;
+
+    gap:0.4rem;
+}
+
+.total-score h2{
+
+    font-family:'Cormorant',serif;
+
+    font-size:2.5rem;
+
+    color:var(--primary);
+}
+
+.total-score p{
+    color:var(--muted);
+}
+
+/* FLOATING CARD */
+
+.floating-card{
+
+    position:absolute;
+
+    right:20px;
+    bottom:0;
+
+    width:190px;
+
+    background:#18150f;
+
+    color:white;
+
+    padding:1.5rem;
+
+    border-radius:18px;
+
+    animation:
+    fadeUp 1s ease 0.7s forwards,
+    floatCard 4s ease-in-out infinite;
+
+    opacity:0;
+}
+
+.floating-card small{
+
+    color:rgba(255,255,255,0.5);
+
+    text-transform:uppercase;
+
+    letter-spacing:2px;
+}
+
+.floating-card h2{
+
+    font-family:'Cormorant',serif;
+
+    color:var(--gold);
+
+    font-size:2.7rem;
+
+    margin:0.5rem 0;
+}
+
+.floating-card p{
+
+    color:rgba(255,255,255,0.6);
+
+    font-size:0.85rem;
+}
+
+/* =================================================
+   SECTION
+================================================= */
+
+.section{
+
+    width:90%;
+    max-width:1300px;
+
+    margin:auto;
+
+    padding:6rem 0;
+}
+
+.section-tag{
+
+    color:var(--primary);
+
+    text-transform:uppercase;
+
+    letter-spacing:3px;
+
+    font-size:0.75rem;
+
+    margin-bottom:1rem;
+}
+
+.section-title{
+
+    font-family:'Cormorant',serif;
+
+    font-size:3.5rem;
+
+    margin-bottom:3rem;
+}
+
+.section-title span{
+
+    color:var(--primary);
+
+    font-style:italic;
+}
+
+/* =================================================
+   GRID
+================================================= */
+
+.food-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:2rem;
+}
+
+.food-card-grid{
+
+    background:white;
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    transition:0.4s;
+
+    animation:fadeUp 1s ease forwards;
+
+    opacity:0;
+}
+
+.food-card-grid:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 20px 40px rgba(0,0,0,0.08);
+}
+
+.grid-image{
+
+    height:240px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.grid-image span{
+
+    font-size:6rem;
+
+    opacity:0.25;
+}
+
+.grid1{
+    background:linear-gradient(135deg,#4b1d10,#b4512f);
+}
+
+.grid2{
+    background:linear-gradient(135deg,#10253f,#2563a6);
+}
+
+.grid3{
+    background:linear-gradient(135deg,#123d2d,#2d9b74);
+}
+
+.grid-body{
+
+    padding:2rem;
+}
+
+.grid-body h3{
+
+    font-family:'Cormorant',serif;
+
+    font-size:2rem;
+
+    margin-bottom:1rem;
+}
+
+.grid-body p{
+
+    color:var(--muted);
+
+    line-height:1.8;
+}
+
+/* =================================================
+   FOOTER SECTION
+================================================= */
+
+.footer{
+
+    background:#12100d;
+
+    padding-top:6rem;
+
+    margin-top:5rem;
+}
+
+
+/* ================= CONTAINER ================= */
+
+.footer-container{
+
+    width:90%;
+    max-width:1300px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:2fr 1fr 1fr 1fr;
+
+    gap:4rem;
+
+    padding-bottom:4rem;
+
+    border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+
+/* ================= ABOUT ================= */
+
+.footer-logo{
+
+    display:flex;
+    align-items:center;
+
+    gap:0.5rem;
+
+    font-family:'Cormorant',serif;
+
+    font-size:2rem;
+
+    color:white;
+
+    margin-bottom:1.5rem;
+}
+
+.footer-star{
+    color:var(--gold);
+}
+
+.footer-text{
+
+    color:rgba(255,255,255,0.55);
+
+    line-height:1.9;
+
+    max-width:350px;
+
+    margin-bottom:2rem;
+}
+
+
+/* ================= SOCIALS ================= */
+
+.footer-socials{
+
+    display:flex;
+
+    gap:1rem;
+}
+
+.footer-socials a{
+
+    width:45px;
+    height:45px;
+
+    border-radius:50%;
+
+    background:#1f1b16;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:white;
+
+    transition:0.3s;
+}
+
+.footer-socials a:hover{
+
+    background:var(--primary);
+
+    transform:translateY(-5px);
+}
+
+
+/* ================= LINKS ================= */
+
+.footer-links{
+
+    display:flex;
+    flex-direction:column;
+
+    gap:1rem;
+}
+
+.footer-links h3{
+
+    color:white;
+
+    font-size:1.1rem;
+
+    margin-bottom:1rem;
+
+    font-family:'Cormorant',serif;
+}
+
+.footer-links a{
+
+    color:rgba(255,255,255,0.55);
+
+    transition:0.3s;
+}
+
+.footer-links a:hover{
+
+    color:var(--gold);
+
+    transform:translateX(5px);
+}
+
+
+/* ================= BOTTOM ================= */
+
+.footer-bottom{
+
+    width:90%;
+    max-width:1300px;
+
+    margin:auto;
+
+    padding:1.5rem 0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.footer-bottom p{
+
+    color:rgba(255,255,255,0.45);
+
+    font-size:0.9rem;
+}
+
+/* =================================================
+   RESPONSIVE
+================================================= */
+
+@media(max-width:992px){
+
+    .hero{
+
+        grid-template-columns:1fr;
+    }
+
+    .food-grid{
+
+        grid-template-columns:1fr;
+    }
+
+    .footer__inner{
+
+        grid-template-columns:1fr 1fr;
+    }
+
+    .hero-title{
+
+        font-size:4rem;
+    }
+}
+
+@media(max-width:768px){
+
+    .nav__links,
+    .nav__cta{
+
+        display:none;
+    }
+
+    .hero-title{
+
+        font-size:3rem;
+    }
+
+    .footer__inner{
+
+        grid-template-columns:1fr;
+    }
+
+    .hero-right{
+
+        height:760px;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="nav">
+
+<div class="nav__inner">
+
+<a href="#" class="nav__logo">
+
+<span class="nav__logo-star">
+★
+</span>
+
+The Hungry Critic
+
+</a>
+
+<ul class="nav__links">
+
+<li><a href="foodcritic.html">Reviews</a></li>
+<li><a href="#" class="active">Hyd-City</a></li>
+<li><a href="cuisines.html">Cuisines</a></li>
+<li><a href="bestlist.html">Best Lists</a></li>
+<li><a href="about.html">About</a></li>
+
+</ul>
+
+<div class="nav__cta">
+
+<a href="#" class="btn btn--ghost">
+Subscribe
+</a>
+
+<a href="#" class="btn btn--primary">
+Write a Review
+</a>
+
+</div>
+
+</div>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-left">
+
+<p class="hero-tag">
+Hyderabad City Guide
+</p>
+
+<h1 class="hero-title">
+
+The soul of <span>Hyderabad</span><br>
+through unforgettable food.
+
+</h1>
+
+<p class="hero-description">
+
+From legendary biryanis in Tolichowki
+to hidden haleem spots in the old city,
+Hyderabad remains one of India's most
+exciting culinary capitals.
+
+</p>
+
+<div class="hero-buttons">
+
+<a href="#" class="btn btn--primary">
+Explore Restaurants
+</a>
+
+<a href="#" class="btn btn--ghost">
+Read Reviews
+</a>
+
+</div>
+
+<div class="hero-stats">
+
+<div class="stat-box">
+
+<h2>120+</h2>
+
+<p>Restaurants Reviewed</p>
+
+</div>
+
+<div class="stat-box">
+
+<h2>18</h2>
+
+<p>Neighbourhood Guides</p>
+
+</div>
+
+<div class="stat-box">
+
+<h2>4.8</h2>
+
+<p>Reader Rating</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- RIGHT -->
+
+<div class="hero-right">
+    <!-- From Uiverse.io  --> 
+<div class="🤚">
+	<div class="👉"></div>
+	<div class="👉"></div>
+	<div class="👉"></div>
+	<div class="👉"></div>
+	<div class="🌴"></div>		
+	<div class="👍"></div>
+</div>
+
+<div class="score-card">
+
+<h4>City Food Score</h4>
+
+<div class="score-row">
+
+<span>Biryani</span>
+
+<div class="bar">
+<div class="fill fill1"></div>
+</div>
+
+<p>9.5</p>
+
+</div>
+
+<div class="score-row">
+
+<span>Haleem</span>
+
+<div class="bar">
+<div class="fill fill2"></div>
+</div>
+
+<p>8.8</p>
+
+</div>
+
+<div class="score-row">
+
+<span>Kebabs</span>
+
+<div class="bar">
+<div class="fill fill3"></div>
+</div>
+
+<p>8.2</p>
+
+</div>
+
+<div class="score-row">
+
+<span>Chai</span>
+
+<div class="bar">
+<div class="fill fill4"></div>
+</div>
+
+<p>9.0</p>
+
+</div>
+
+<div class="total-score">
+
+<h2>9.1</h2>
+
+<p>/10 Exceptional</p>
+
+</div>
+
+</div>
+
+<div class="main-card">
+
+<div class="main-card-image">
+
+<span>🍛</span>
+
+<div class="badge">
+Editor's Pick
+</div>
+
+</div>
+
+<div class="main-card-body">
+
+<p class="card-location">
+Tolichowki • Hyderabad
+</p>
+
+<h3>
+Shah Ghouse
+</h3>
+
+<div class="stars">
+
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star"></i>
+<i class="fa-solid fa-star faded"></i>
+
+</div>
+
+<p class="card-text">
+
+Rich aromas, perfectly layered rice
+and deeply spiced mutton create one
+of the city's most iconic biryani experiences.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="floating-card">
+
+<small>Top Rated</small>
+
+<h2>18</h2>
+
+<p>new restaurants this month</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- RESTAURANTS -->
+
+<section class="section">
+
+<p class="section-tag">
+Top Restaurants
+</p>
+
+<h2 class="section-title">
+
+Best Restaurants In <span>Hyderabad</span>
+
+</h2>
+
+<div class="food-grid">
+
+<div class="food-card-grid">
+
+<div class="grid-image grid1">
+<span>🍛</span>
+</div>
+
+<div class="grid-body">
+
+<h3>Shah Ghouse</h3>
+
+<p>
+
+Legendary biryani destination
+known for rich aromas and
+perfectly cooked rice.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="food-card-grid">
+
+<div class="grid-image grid2">
+<span>🥩</span>
+</div>
+
+<div class="grid-body">
+
+<h3>Pista House</h3>
+
+<p>
+
+One of the most iconic haleem
+spots during Ramadan season.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="food-card-grid">
+
+<div class="grid-image grid3">
+<span>☕</span>
+</div>
+
+<div class="grid-body">
+
+<h3>Nimrah Cafe</h3>
+
+<p>
+
+Classic Irani chai experience
+with Osmania biscuits near Charminar.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- MUST TRY -->
+
+<section class="section">
+
+<p class="section-tag">
+Hyderabad Essentials
+</p>
+
+<h2 class="section-title">
+
+Dishes You <span>Cannot Miss</span>
+
+</h2>
+
+<div class="food-grid">
+
+<div class="food-card-grid">
+
+<div class="grid-image grid1">
+<span>🍛</span>
+</div>
+
+<div class="grid-body">
+
+<h3>Biryani</h3>
+
+<p>
+
+Aromatic rice, saffron,
+slow-cooked meat and generations
+of culinary mastery.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="food-card-grid">
+
+<div class="grid-image grid2">
+<span>🥘</span>
+</div>
+
+<div class="grid-body">
+
+<h3>Haleem</h3>
+
+<p>
+
+A Ramadan staple transformed
+into one of India's most beloved comfort foods.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="food-card-grid">
+
+<div class="grid-image grid3">
+<span>☕</span>
+</div>
+
+<div class="grid-body">
+
+<h3>Irani Chai</h3>
+
+<p>
+
+Thick, sweet and deeply nostalgic,
+best enjoyed with Osmania biscuits.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- AREAS -->
+
+<section class="section">
+
+<p class="section-tag">
+Explore Hyderabad
+</p>
+
+<h2 class="section-title">
+
+Best Food <span>Neighbourhoods</span>
+
+</h2>
+
+<div class="food-grid">
+
+<div class="food-card-grid">
+
+<div class="grid-image grid1">
+<span>🌆</span>
+</div>
+
+<div class="grid-body">
+
+<h3>Tolichowki</h3>
+
+<p>
+
+Famous for biryani spots,
+late-night cafés and rich Mughlai flavours.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="food-card-grid">
+
+<div class="grid-image grid2">
+<span>🏙️</span>
+</div>
+
+<div class="grid-body">
+
+<h3>Jubilee Hills</h3>
+
+<p>
+
+Premium dining experiences,
+luxury cafés and fine dining restaurants.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="food-card-grid">
+
+<div class="grid-image grid3">
+<span>🌙</span>
+</div>
+
+<div class="grid-body">
+
+<h3>Old City</h3>
+
+<p>
+
+Historic food culture filled
+with haleem, kebabs and Irani cafés.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- BEST LISTS -->
+
+<section class="section">
+
+<p class="section-tag">
+Curated Guides
+</p>
+
+<h2 class="section-title">
+
+Popular <span>Best Lists</span>
+
+</h2>
+
+<div class="food-grid">
+
+<div class="food-card-grid">
+
+<div class="grid-image grid1">
+<span>🍗</span>
+</div>
+
+<div class="grid-body">
+
+<h3>Best Kebabs</h3>
+
+<p>
+
+The juiciest seekh kebabs
+and grilled meats across Hyderabad.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="food-card-grid">
+
+<div class="grid-image grid2">
+<span>🍰</span>
+</div>
+
+<div class="grid-body">
+
+<h3>Top Cafés</h3>
+
+<p>
+
+Modern cafés, desserts and
+specialty coffee experiences around the city.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="food-card-grid">
+
+<div class="grid-image grid3">
+<span>🍜</span>
+</div>
+
+<div class="grid-body">
+
+<h3>Late Night Eats</h3>
+
+<p>
+
+The best places open after
+midnight for biryani and chai.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<!-- =================================================
+     FOOTER SECTION
+================================================= -->
+
+<footer class="footer">
+
+  <div class="footer-container">
+
+
+    <!-- LEFT -->
+
+    <div class="footer-about">
+
+      <a href="#" class="footer-logo">
+
+        <span class="footer-star">
+          <i class="fa-solid fa-star"></i>
+        </span>
+
+        The Hungry Critic
+
+      </a>
+
+      <p class="footer-text">
+
+        Honest restaurant reviews,
+        curated food guides and
+        unforgettable dining discoveries
+        across India.
+
+      </p>
+
+
+      <!-- SOCIAL ICONS -->
+
+      <div class="footer-socials">
+
+        <a href="#">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+
+        <a href="#">
+          <i class="fa-brands fa-x-twitter"></i>
+        </a>
+
+        <a href="#">
+          <i class="fa-brands fa-youtube"></i>
+        </a>
+
+        <a href="#">
+          <i class="fa-brands fa-facebook-f"></i>
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <!-- LINKS -->
+
+    <div class="footer-links">
+
+      <h3>Explore</h3>
+
+      <a href="#">Reviews</a>
+      <a href="#">Cities</a>
+      <a href="#">Cuisines</a>
+      <a href="#">Best Lists</a>
+      <a href="#">Newsletter</a>
+
+    </div>
+
+
+    <!-- COMPANY -->
+
+    <div class="footer-links">
+
+      <h3>Company</h3>
+
+      <a href="#">About Us</a>
+      <a href="#">Contact</a>
+      <a href="#">Careers</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms & Conditions</a>
+
+    </div>
+
+
+    <!-- CONTACT -->
+
+    <div class="footer-links">
+
+      <h3>Contact</h3>
+
+      <a href="#">hello@hungrycritic.com</a>
+      <a href="#">+91 98765 43210</a>
+      <a href="#">Hyderabad, India</a>
+
+    </div>
+
+  </div>
+
+
+  <!-- BOTTOM -->
+
+  <div class="footer-bottom">
+
+    <p>
+      © 2026 The Hungry Critic. All Rights Reserved.
+    </p>
+
+  </div>
+
+</footer>
+
+</body>
+
+</html>
