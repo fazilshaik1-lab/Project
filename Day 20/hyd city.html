@@ -1134,6 +1134,31 @@ img{
 
     font-size:0.9rem;
 }
+/* =================================================
+   HAMBURGER
+================================================= */
+
+#menu-toggle{
+    display:none;
+}
+
+.hamburger{
+
+    display:none;
+
+    font-size:1.6rem;
+
+    cursor:pointer;
+
+    color:var(--text);
+}
+
+/* MOBILE BUTTONS */
+
+.mobile-buttons{
+    display:none;
+}
+
 
 /* =================================================
    RESPONSIVE
@@ -1141,48 +1166,241 @@ img{
 
 @media(max-width:992px){
 
+    body{
+        overflow-x:hidden;
+    }
+
+    .hero{
+        grid-template-columns:1fr;
+    }
+
+    .food-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero-title{
+        font-size:4rem;
+    }
+
+    .footer-container{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+
+/* =================================================
+   MOBILE NAVBAR
+================================================= */
+
+@media(max-width:768px){
+
+    body{
+        overflow-x:hidden;
+    }
+
+    /* NAVBAR */
+
+    .nav__inner{
+
+        width:100%;
+
+        padding:1rem 1.5rem;
+
+        display:flex;
+
+        align-items:center;
+
+        justify-content:space-between;
+
+        position:relative;
+    }
+
+    /* LOGO */
+
+    .nav__logo{
+
+        font-size:1.7rem;
+
+        max-width:220px;
+
+        line-height:1.1;
+    }
+
+    /* SHOW HAMBURGER */
+
+    .hamburger{
+
+        display:block;
+
+        z-index:1001;
+    }
+
+    /* HIDE DESKTOP BUTTONS */
+
+    .nav__cta{
+        display:none;
+    }
+
+    /* MOBILE MENU */
+
+    .nav__links{
+
+        display:none;
+
+        position:absolute;
+
+        top:100%;
+        left:0;
+
+        width:100%;
+
+        background:#fdfaf3;
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:0;
+
+        padding:1rem 1.5rem 2rem;
+
+        border-top:1px solid var(--border);
+
+        border-bottom:1px solid var(--border);
+
+        z-index:999;
+    }
+
+    /* OPEN MENU */
+
+    #menu-toggle:checked ~ .nav__links{
+
+        display:flex;
+    }
+
+    /* NAV ITEMS */
+
+    .nav__links li{
+
+        width:100%;
+
+        list-style:none;
+    }
+
+    .nav__links a{
+
+        display:block;
+
+        width:100%;
+
+        padding:1rem 0;
+
+        border-bottom:1px solid rgba(0,0,0,0.05);
+    }
+
+    /* REMOVE DESKTOP UNDERLINE */
+
+    .nav__links a::after{
+        display:none;
+    }
+
+    /* MOBILE BUTTONS */
+
+    .mobile-buttons{
+
+        display:flex;
+
+        flex-direction:column;
+
+        width:100%;
+
+        gap:1rem;
+
+        margin-top:1.5rem;
+    }
+
+    .mobile-buttons .btn{
+
+        width:100%;
+    }
+
+    /* HERO */
+
     .hero{
 
         grid-template-columns:1fr;
+
+        gap:3rem;
+
+        padding:3rem 1.5rem;
     }
+
+    .hero-title{
+
+        font-size:3rem;
+
+        line-height:1.1;
+    }
+
+    .hero-description{
+
+        font-size:0.95rem;
+    }
+
+    /* HERO RIGHT */
+
+    .hero-right{
+
+        display:flex;
+
+        flex-direction:column;
+
+        gap:2rem;
+
+        height:auto;
+    }
+
+    /* REMOVE ABSOLUTE POSITIONING */
+
+    .main-card,
+    .score-card,
+    .floating-card{
+
+        position:relative;
+
+        top:auto;
+        left:auto;
+        right:auto;
+        bottom:auto;
+
+        transform:none;
+
+        width:100%;
+
+        max-width:100%;
+
+        margin-bottom:1rem;
+    }
+
+    /* GRID FIX */
 
     .food-grid{
 
         grid-template-columns:1fr;
     }
 
-    .footer__inner{
+    /* FOOTER */
 
-        grid-template-columns:1fr 1fr;
-    }
-
-    .hero-title{
-
-        font-size:4rem;
-    }
-}
-
-@media(max-width:768px){
-
-    .nav__links,
-    .nav__cta{
-
-        display:none;
-    }
-
-    .hero-title{
-
-        font-size:3rem;
-    }
-
-    .footer__inner{
+    .footer-container{
 
         grid-template-columns:1fr;
+
+        gap:3rem;
     }
 
-    .hero-right{
+    .footer-bottom{
 
-        height:760px;
+        text-align:center;
     }
 }
 
@@ -1193,10 +1411,15 @@ img{
 <body>
 
 <!-- NAVBAR -->
+<!-- =================================================
+     NAVBAR
+================================================= -->
 
 <nav class="nav">
 
 <div class="nav__inner">
+
+<!-- LOGO -->
 
 <a href="#" class="nav__logo">
 
@@ -1208,6 +1431,23 @@ The Hungry Critic
 
 </a>
 
+
+<!-- TOGGLE -->
+
+<input type="checkbox" id="menu-toggle">
+
+
+<!-- HAMBURGER -->
+
+<label for="menu-toggle" class="hamburger">
+
+<i class="fa-solid fa-bars"></i>
+
+</label>
+
+
+<!-- NAV LINKS -->
+
 <ul class="nav__links">
 
 <li><a href="foodcritic.html">Reviews</a></li>
@@ -1216,7 +1456,25 @@ The Hungry Critic
 <li><a href="bestlist.html">Best Lists</a></li>
 <li><a href="about.html">About</a></li>
 
+
+<!-- MOBILE BUTTONS -->
+
+<div class="mobile-buttons">
+
+<a href="#" class="btn btn--ghost">
+Subscribe
+</a>
+
+<a href="#" class="btn btn--primary">
+Write a Review
+</a>
+
+</div>
+
 </ul>
+
+
+<!-- DESKTOP BUTTONS -->
 
 <div class="nav__cta">
 
