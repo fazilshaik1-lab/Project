@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+//for entry pass, need three conditions - 18+, ID, entrypass
+//using && operator
+let hasID = "true";
+let hasPass = "true";
+let age = "19";
+
+if(hasID && hasPass && age >= 18 ) {
+    console.log("Entry Allowed");
+} else {
+    console.log("No Entry");
+}
+</script>
+
+<script>
+
+let userHasID = "false";
+let userHasPass = "true";
+let userAge = "15"
+
+
+if ( userHasID || userHasPass) {
+    console.log("Entry Allowed");   // using || , even if one is true, either id or pass would be sufficient to get entry
+
+} else {
+    console.log("No entry")
+}
+
+if((userHasID || userHasPass) && userAge>=18){
+    console.log("Entry Allowed"); //using both and, or : user has either id or pass but should be above 18 to get the entry
+} else {
+    console.log("No Entry");
+}
+
+</script>
+
+<script>
+    //we have to decide whether leave is granted or not by checking three conditions being weeekend, holiday, leave approved
+
+    let isWeekend = true;
+    let isHoliday = false;
+    let isLeaveApproved = true;
+
+    if ( isWeekend && isHoliday && isLeaveApproved){
+        console.log("Leave Granted");
+    } else {
+        console.log("Leave Rejected"); //using 'and' all three should be true else eave rejected
+    }
+
+    if ( isWeekend || isHoliday || isLeaveApproved){
+        console.log("Leave Granted");
+    } else {
+        console.log("Leave Rejected");//using or - any of three should be true to lave to get approved
+    }
+
+    if((isWeekend || isHoliday) && isLeaveApproved){
+        console.log("Leave Granted"); 
+    } else {
+        console.log("Leave Rejected")// choosing between weekend or holiday and definitekly leave approved
+    }
+
+
+</script>
+
+<script>
+    let month = prompt("Enter month name" );
+
+    switch(month) {
+        case "march":
+        case "april":
+        case "may":
+        console.log("summer season");
+        break;
+
+        case "june":
+        case "july":
+        case "august":
+        console.log("rainy season");
+        break;
+
+        case "sepetember":
+        case "october":
+        case "november":
+        console.log("autumn season");
+        break;
+
+        case "december":
+        case "january":
+        case "febraury":
+        console.log("winter season");
+        break;
+
+        default: console.log("invalid season");
+    }
+</script>
+
+<script>
+
+    let monthe = 2;
+
+    switch(monthe){
+
+        case 1 : console.log("Jnauary");
+        break;
+
+        case 2 : console.log("Febraury");
+        break;
+
+        case 3 : console.log("March");
+        break;
+
+        case 4 : console.log("April");
+        break;
+
+        case 5 : console.log("May");
+        break;
+
+        case 6 : console.log("June");
+        break;
+
+        case 7 : console.log("July");
+        break;
+
+        case 8 : console.log("August");
+        break;
+
+        case 9 : console.log("September");
+        break;
+
+        case 10 : console.log("October");
+        break;
+
+        case 11 : console.log("November");
+        break;
+
+        case 12 : console.log("December");
+        break;
+    }
+</script>
+
+</html>
